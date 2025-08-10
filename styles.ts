@@ -1,5 +1,20 @@
 import { createGlobalStyle } from "styled-components";
 
+
+export const colors = {
+  primary: "#e7adad",
+  primaryTransparent: "rgba(231, 173, 173, 0.35)",
+  title: "#5c5656",
+  text: "#818181",
+  white: "#ffffff"
+};
+
+export const breakpoints = {
+  mobile: "768px", 
+  tablet: "1024px",
+  desktop: "1200px",
+}
+
 export const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
@@ -16,18 +31,10 @@ export const GlobalStyle = createGlobalStyle`
     max-width: 1250px;
     margin: 0 auto;
   }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    .container {
+      padding: 0 16px;
+    }
+  }
 `;
-
-export const colors = {
-  primary: "#e7adad",
-  primaryTransparent: "rgba(231, 173, 173, 0.35)",
-  title: "#5c5656",
-  text: "#818181",
-  white: "#ffffff"
-};
-
-export const breakpoints = {
-  mobile: "768px", 
-  tablet: "1024px",
-  desktop: "1200px",
-}

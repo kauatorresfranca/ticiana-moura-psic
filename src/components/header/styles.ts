@@ -15,6 +15,10 @@ export const Header = styled.header`
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     gap: 16px;
+
+    img {
+      width: 250px;
+    }
   }
 `;
 
@@ -107,7 +111,6 @@ export const HeaderActions = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0px 16px;
   width: 100%;
 
   @media (min-width: ${breakpoints.tablet}) {
