@@ -23,6 +23,7 @@ export const colors = {
   primaryTransparent: "rgba(231, 173, 173, 0.35)",
   title: "#5c5656",
   text: "#818181",
+  white: "#ffffff"
 };
 
 export const breakpoints = {

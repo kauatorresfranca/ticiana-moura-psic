@@ -6,7 +6,7 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  margin-bottom: 100px;
+  margin-bottom: 40px;
 
   img {
     width: 300px
