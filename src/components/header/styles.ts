@@ -6,8 +6,11 @@ export const Header = styled.header`
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding: 32px 0;
   margin-bottom: 100px;
+
+  img {
+    width: 300px
+  }
 
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;

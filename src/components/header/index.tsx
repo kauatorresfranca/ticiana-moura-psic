@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import * as S from './styles';
+import logo from '../../assets/images/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -18,7 +19,7 @@ const Header = () => {
 
   return (
     <S.Header>
-      <img src="/logo.png" alt="Logo" />
+      <img src={logo} alt="Logo" />
       <S.HeaderMenu>
         {menuItems.map((item) => (
           <S.HeaderMenuItem key={item}>{item}</S.HeaderMenuItem>

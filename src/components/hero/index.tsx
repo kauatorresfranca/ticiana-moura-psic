@@ -1,4 +1,5 @@
 import * as S from './styles';
+import HeroImage from '../../assets/images/heroImage.png';
 
 export const Hero = () => {
   return (
@@ -10,7 +11,7 @@ export const Hero = () => {
         </S.HeroDescription>
         <S.HeroButton><i className="ri-wechat-line"></i> Agendar Atendimento</S.HeroButton>
       </S.HeroContent>
-      <S.HeroImage src="/path/to/image.jpg" alt="Imagem de equilíbrio emocional" />
+      <S.HeroImage src={HeroImage} alt="Imagem de equilíbrio emocional" />
     </S.Hero>
   );
 };
