@@ -1,30 +1,30 @@
-import * as S from './styles'
+import * as S from './styles';
 import AboutMeImage from '../../assets/images/aboutMeImage.jpg';
 
 const AboutMe = () => {
-    return (
-        <S.AboutMe>
-            <S.AboutMeImage src={AboutMeImage} alt="Sobre Mim" />
-            <S.AboutMeContent>
-                <S.AboutMeTitle>Ticiana Moura</S.AboutMeTitle>
-                <S.AboutMeSubtitle>Psicóloga | CRP 15/1563</S.AboutMeSubtitle>
-                <S.AboutMeDescription>
-                    Me chamo Ticiana Moura, sou psicóloga com mais de dez anos de experiência atendendo pessoas ao redor mundo e contribuindo para o alívio do sofrimento de cada um deles, juntos trabalhamos o cuidado com a saúde mental e construção de uma vida que valha a pena ser vivida. É possível!
-                    Atuo com a psicologia baseada em evidências, sempre buscando o que vai trazer mais resultados e acolhimento para meus pacientes. A base teórica do meu atendimento é a Terapia Cognitiva Comportamental – TCC – que trabalha os aspectos relativos a forma de pensar e sentir, promovendo mudanças significativas na vida de todos que atendo e transformando a forma que lidam com suas queixas.
-                    Acredito que a maior parte do nosso sofrimento vem da interpretação e da importância que damos ao que nos acontece. Por isso, antes de mais nada precisamos nos conhecer, nos conectar aos nossos valores e objetivos de vida, pois a mudança percorre o caminho do autoconhecimento.
-                </S.AboutMeDescription>
-                <S.AboutMeTraining>
-                    <S.AboutMeTrainingTitle>Formação Acadêmica</S.AboutMeTrainingTitle>
-                    <S.AboutMeTrainingList>
-                        <li>Graduação em Psicologia - Universidade de São Paulo (USP)</li>
-                        <li>Pós-graduação em Terapia Cognitivo-Comportamental - Instituto de Psicologia Aplicada (IPA)</li>
-                        <li>Especialização em Terapia de Casal e Família - Centro de Estudos em Terapia Familiar (CETF)</li>
-                        <li>Curso de Mindfulness e Redução do Estresse - Universidade de Massachusetts (UMass)</li>
-                    </S.AboutMeTrainingList>
-                </S.AboutMeTraining>
-            </S.AboutMeContent>
-        </S.AboutMe>
-    );
+  return (
+    <S.AboutMe id="Sobre Mim">
+      <S.AboutMeImage src={AboutMeImage} alt="Sobre Mim" />
+      <S.AboutMeContent>
+        <S.AboutMeTitle>Ticiana Moura</S.AboutMeTitle>
+        <S.AboutMeSubtitle>Psicóloga | CRP 15/1563</S.AboutMeSubtitle>
+        <S.AboutMeDescription>
+          Sou Ticiana Moura, psicóloga com mais de 20 anos de experiência, dedicada a promover o bem-estar emocional com empatia e escuta ativa. Atuo em Maceió e Coruripe, oferecendo atendimentos presenciais baseados em estratégias personalizadas e evidências, com foco na Terapia Cognitivo-Comportamental (TCC). Minha trajetória inclui coordenação de serviços de saúde mental, atendimentos de urgência e suporte a servidores, sempre buscando inovação e cuidado humano. Acredito que o autoconhecimento é o caminho para superar bloqueios e construir uma vida mais leve.
+        </S.AboutMeDescription>
+        <S.AboutMeTraining>
+          <S.AboutMeTrainingTitle>Formação e Experiência</S.AboutMeTrainingTitle>
+          <S.AboutMeTrainingList>
+            <li>Graduação em Psicologia - CESMAC (2000)</li>
+            <li>Psicóloga na UBS Dr. Hamilton Falcão (2003-2005)</li>
+            <li>Psicóloga do SAMU (2004-2008)</li>
+            <li>Coordenadora do Núcleo de Atenção à Saúde do Servidor (2008-2012)</li>
+            <li>Psicóloga Hospitalar e Coordenadora no Hospital Geral do Estado (2012-atual)</li>
+            <li>Consultório Particular (2004-atual)</li>
+          </S.AboutMeTrainingList>
+        </S.AboutMeTraining>
+      </S.AboutMeContent>
+    </S.AboutMe>
+  );
 };
 
 export default AboutMe;

@@ -8,7 +8,7 @@ export const Hero = styled.section`
 
   @media (max-width: 768px) {
     flex-direction: column;
-    align-items: start;
+    align-items: center;
   }
 `;
 
@@ -34,7 +34,7 @@ export const HeroDescription = styled.p`
   margin-bottom: 24px;
 `;
 
-export const HeroButton = styled.button`
+export const HeroButton = styled.a`
   background-color: ${colors.primaryTransparent};
   color: ${colors.title};
   padding: 12px 24px;
@@ -43,6 +43,7 @@ export const HeroButton = styled.button`
   cursor: pointer;
   font-size: 16px;
   font-weight: 600;
+  text-decoration: none;
 
   i {
     color: ${colors.title};

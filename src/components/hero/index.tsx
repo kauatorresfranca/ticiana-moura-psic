@@ -9,7 +9,9 @@ export const Hero = () => {
         <S.HeroDescription>
           Com psicoterapia humanizada e baseada em evidências, transforme sua relação com as emoções. Atendimento online, acolhedor e confidencial – estou aqui para te guiar no caminho do autoconhecimento, sem sair de casa.
         </S.HeroDescription>
-        <S.HeroButton><i className="ri-wechat-line"></i> Agendar Atendimento</S.HeroButton>
+        <S.HeroButton href='https://wa.me/+5582996727126?text=Olá, gostaria de agendar uma consulta.'>
+          <i className="ri-wechat-line"></i> Agendar Atendimento
+        </S.HeroButton>
       </S.HeroContent>
       <S.HeroImage src={HeroImage} alt="Imagem de equilíbrio emocional" />
     </S.Hero>

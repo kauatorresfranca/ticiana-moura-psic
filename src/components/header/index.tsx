@@ -22,7 +22,7 @@ const Header = () => {
       <img src={logo} alt="Logo" />
       <S.HeaderMenu>
         {menuItems.map((item) => (
-          <S.HeaderMenuItem key={item}>{item}</S.HeaderMenuItem>
+          <S.HeaderMenuItem href={`#${item}`} key={item}>{item}</S.HeaderMenuItem>
         ))}
       </S.HeaderMenu>
       <S.HeaderActions>
@@ -31,16 +31,14 @@ const Header = () => {
           aria-label={isMenuOpen ? 'Fechar menu' : 'Abrir menu'}
           aria-expanded={isMenuOpen}
         >
-          <span></span>
-          <span></span>
-          <span></span>
+          {isMenuOpen ? <i className="ri-close-line"></i> : <><span></span><span></span><span></span></>}
         </S.HeaderMenuMobileToggle>
-        <S.HeaderLink>AGENDE SUA CONSULTA</S.HeaderLink>
+        <S.HeaderLink href='https://wa.me/+5582996727126?text=Olá, gostaria de agendar uma consulta.'>AGENDE SUA CONSULTA</S.HeaderLink>
       </S.HeaderActions>
       {isMenuOpen && (
         <S.HeaderMenuMobile>
           {menuItems.map((item) => (
-            <S.HeaderMenuItem key={item} onClick={toggleMenu}>
+            <S.HeaderMenuItem href={`#${item}`} key={item} onClick={toggleMenu}>
               {item}
             </S.HeaderMenuItem>
           ))}

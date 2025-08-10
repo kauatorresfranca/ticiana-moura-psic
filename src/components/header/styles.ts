@@ -5,6 +5,7 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
+  position: relative;
   width: 100%;
   margin-bottom: 40px;
 
@@ -86,6 +87,15 @@ export const HeaderMenuMobileToggle = styled.div`
     }
   }
 
+  i {
+    font-size: 24px;
+    color: ${colors.text};
+
+    &:hover {
+      cursor: pointer;
+    }
+  }
+
   @media (max-width: ${breakpoints.tablet}) {
     display: block;
   }
@@ -98,10 +108,10 @@ export const HeaderMenuMobile = styled.div`
     display: flex;
     flex-direction: column;
     width: 100%;
-    padding: 1rem;
+    padding: 16px;
     background-color: #fff;
     position: absolute;
-    top: 100%;
+    top: 140px;
     left: 0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   }
