@@ -16,6 +16,7 @@ export const Header = styled.header`
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
     gap: 16px;
+    padding: 0 16px;
 
     img {
       width: 250px;

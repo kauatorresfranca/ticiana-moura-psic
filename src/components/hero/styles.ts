@@ -9,6 +9,7 @@ export const Hero = styled.section`
   @media (max-width: 768px) {
     flex-direction: column;
     align-items: center;
+    padding: 0 16px;
   }
 `;
 
@@ -25,7 +26,6 @@ export const HeroTitle = styled.h1`
   color: ${colors.primary};
   font-weight: 700;
   margin-bottom: 24px;
-
 `;
 
 export const HeroDescription = styled.p`

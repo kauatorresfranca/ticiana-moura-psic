@@ -5,12 +5,12 @@ export const PainPoints = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 3rem 1rem;
+  padding: 48px 16px;
   background-color: #f9f9f9;
   text-align: center;
 
   @media (min-width: ${breakpoints.tablet}) {
-    padding: 4rem 2rem;
+    padding: 64px 32px;
   }
 `;
 

@@ -4,6 +4,7 @@ import Footer from "./components/footer"
 import Header from "./components/header"
 import Hero from "./components/hero"
 import PainPoints from "./components/pain-points"
+import SocialMedia from "./components/social-media"
 import Testimonials from "./components/testimonials"
 
 
@@ -19,6 +20,7 @@ function App() {
         <AboutMe /> 
         <Testimonials />
         <FAQ />
+        <SocialMedia />
         <Footer />
       </div>
     </div>

@@ -4,6 +4,7 @@ import { createGlobalStyle } from "styled-components";
 export const colors = {
   primary: "#e7adad",
   primaryTransparent: "rgba(231, 173, 173, 0.35)",
+  background: "#f9f9f9",
   title: "#5c5656",
   text: "#818181",
   white: "#ffffff"
@@ -25,7 +26,7 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background-color: #ffffff;
+    background-color: ${colors.background};
   }
 
   .container {
@@ -33,9 +34,5 @@ export const GlobalStyle = createGlobalStyle`
     margin: 0 auto;
   }
 
-  @media (max-width: ${breakpoints.tablet}) {
-    .container {
-      padding: 0 16px;
-    }
   }
 `;

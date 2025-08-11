@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { colors } from "../../../styles";
+import { breakpoints, colors } from "../../../styles";
 
 export const FAQ = styled.div`
   display: flex;
@@ -12,6 +12,10 @@ export const FAQ = styled.div`
     color: ${colors.title};
     font-weight: 500;
     text-align: center;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 32px 16px;
   }
 `;
 
@@ -59,7 +63,7 @@ export const FAQQuestion = styled.h3`
   }
 
   &.active {
-    background-color: #e0f0ff;
+    background-color: ${colors.primaryTransparent};
     color: ${colors.primary};
 
     i {

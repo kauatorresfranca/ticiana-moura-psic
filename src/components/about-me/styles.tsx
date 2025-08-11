@@ -46,6 +46,10 @@ export const AboutMeDescription = styled.p`
     font-size: 18px;
     color: ${colors.text};
     line-height: 1.6;
+
+    @media (max-width: ${breakpoints.tablet}) {
+        font-size: 16px;
+    }
 `;
 
 export const AboutMeTraining = styled.div`
