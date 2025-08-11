@@ -5,13 +5,13 @@ export const AboutMe = styled.section`
     display: flex;
     align-items: center;
     gap: 40px;
-    background: linear-gradient(180deg, ${colors.primaryTransparent} 95%, ${colors.white} 100%);
+    background: linear-gradient(180deg, ${colors.primaryTransparent} 95%, ${colors.background} 100%);
     padding: 60px 40px;
     border-radius: 10%;
 
     @media (max-width: ${breakpoints.tablet}) {
         flex-direction: column;
-        border-radius: 10px;
+        border-radius: 40px 40px 0 0;
     }
 `;
 

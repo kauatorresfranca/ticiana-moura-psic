@@ -10,7 +10,7 @@ export const SocialMediaContainer = styled.div`
   background-color: #f9f9f9;
 
   img {
-    width: 300px;
+    width: 260px;
   }
 `;
 
@@ -18,6 +18,7 @@ export const SocialMediaDescription = styled.p`
   font-size: 16px;
   color: ${colors.text};
   margin-bottom: 24px;
+  text-align: center;
 `;
 
 export const SocialMediaLinks = styled.div`
