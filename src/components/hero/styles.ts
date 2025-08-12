@@ -44,6 +44,7 @@ export const HeroButton = styled.a`
   font-size: 16px;
   font-weight: 600;
   text-decoration: none;
+  transition: 0.4s ease;
 
   i {
     color: ${colors.title};
@@ -53,6 +54,7 @@ export const HeroButton = styled.a`
 
   &:hover {
     background-color: ${colors.primary};
+    transform: scale(1.05);
   }
 `;
 

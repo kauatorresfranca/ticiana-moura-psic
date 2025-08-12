@@ -6,6 +6,7 @@ import Hero from "./components/hero"
 import PainPoints from "./components/pain-points"
 import SocialMedia from "./components/social-media"
 import Testimonials from "./components/testimonials"
+import { Treatments } from "./components/treatments/index."
 
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
         <Hero />
         <PainPoints />
         <AboutMe /> 
+        <Treatments />
         <Testimonials />
         <FAQ />
         <SocialMedia />

@@ -57,12 +57,13 @@ export const HeaderLink = styled.a`
   text-decoration: none;
   font-size: 16px;
   font-weight: 600;
-  transition: 0.3s ease-in-out;
+  transition: 0.4s ease-in-out;
 
   &:hover {
     cursor: pointer;
     background-color: ${colors.primary};
     color: #fff;
+    transform: scale(1.05);
   }
 
   @media (max-width: ${breakpoints.tablet}) {

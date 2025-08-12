@@ -60,7 +60,8 @@ export const SymptomItem = styled.li`
   gap: 16px;
   max-width: 250px;
 
-  i {
+  img {
+    width: 142px;
     padding: 30px;
     border-radius: 50%;
     font-size: 80px;
@@ -81,4 +82,28 @@ export const CallToAction = styled.p`
   color: ${colors.text};
   font-weight: 600;
   max-width: 600px;
+
+  span {
+    color: ${colors.primary}}
 `;
+
+export const Button = styled.a`
+  margin-top: 16px;
+  background-color: transparent;
+  color: ${colors.title};
+  padding: 12px 24px;
+  border: 3px solid ${colors.primary};
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: 0.4s ease;
+
+  &:hover {
+    background-color: ${colors.primaryTransparent};
+    color: #fff;
+    border: 3px solid transparent;
+    transform: scale(1.05);
+  }
+`

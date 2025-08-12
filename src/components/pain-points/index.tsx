@@ -1,4 +1,8 @@
 import * as S from './styles';
+import ansiedade from '../../assets/images/ansiedade.png';
+import preocupacao from '../../assets/images/preocucacao.png';
+import estresse from '../../assets/images/estresse.png';
+import autoestima from '../../assets/images/autoestima.png';
 
 export const PainPoints = () => {
   return (
@@ -10,25 +14,28 @@ export const PainPoints = () => {
       </S.PainPointsText>
       <S.SymptomsList>
         <S.SymptomItem>
-          <i className="ri-brain-line"></i>
+          <img src={ansiedade} alt="" />
           <S.SymptomText>Ansiedade constante que acelera o coração e rouba o sono</S.SymptomText>
         </S.SymptomItem>
         <S.SymptomItem>
-          <i className="ri-emotion-unhappy-line"></i>
+          <img src={preocupacao} alt="" />
           <S.SymptomText>Preocupações excessivas que transformam dias comuns em batalhas internas</S.SymptomText>
         </S.SymptomItem>
         <S.SymptomItem>
-          <i className="ri-pulse-line"></i>
+          <img src={estresse} alt="" />
           <S.SymptomText>Irritabilidade e estresse que explodem em momentos inesperados</S.SymptomText>
         </S.SymptomItem>
         <S.SymptomItem>
-          <i className="ri-user-heart-line"></i>
+          <img src={autoestima} alt="" />
           <S.SymptomText>Baixa autoestima que faz você duvidar do seu valor e potencial</S.SymptomText>
         </S.SymptomItem>
       </S.SymptomsList>
       <S.CallToAction>
-        Esses desafios não precisam definir sua vida. Com apoio profissional, você pode encontrar alívio e equilíbrio. Agende uma consulta e dê o primeiro passo para uma mente mais serena.
+        Esses desafios <span>não precisam</span> definir sua vida. Com apoio profissional, você pode encontrar alívio e equilíbrio. <br /><br />Agende uma consulta e dê o <span>primeiro passo</span> para uma mente mais serena.
       </S.CallToAction>
+      <S.Button>
+        Agendar Consulta
+      </S.Button>
     </S.PainPoints>
   );
 };
