@@ -1,7 +1,8 @@
 import styled from "styled-components";
+import { colors } from "../../../styles";
 
 export const Footer = styled.footer`
-  background-color: #f8f8f8;
+  background-color: ${colors.background};
   padding: 20px 0;
 `;
 
@@ -13,5 +14,5 @@ export const FooterContent = styled.div`
 
 export const FooterText = styled.p`
   font-size: 14px;
-  color: #666;
+  color: ${colors.text};
 `;

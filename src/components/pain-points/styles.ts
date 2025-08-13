@@ -90,7 +90,7 @@ export const CallToAction = styled.p`
 export const Button = styled.a`
   margin-top: 16px;
   background-color: transparent;
-  color: ${colors.title};
+  color: ${colors.text};
   padding: 12px 24px;
   border: 3px solid ${colors.primary};
   border-radius: 10px;

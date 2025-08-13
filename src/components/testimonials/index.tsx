@@ -21,22 +21,23 @@ const Testimonials = () => {
     {
       name: 'Maria Silva',
       image: client2,
-      text: 'A Ticiana é uma profissional incrível! Ela me ajudou a ver a vida de uma forma diferente e a lidar com meus problemas de maneira mais saudável.',
+      text: 'A Ticiana me ajudou a encontrar equilíbrio emocional e a lidar com momentos difíceis de forma muito mais leve. Sou extremamente grata pelo cuidado e atenção que ela oferece.',
       location: 'Maceió, AL',
     },
     {
       name: 'José Carlos',
       image: client1,
-      text: 'A Ticiana é uma profissional incrível! Ela me ajudou a ver a vida de uma forma diferente e a lidar com meus problemas de maneira mais saudável.',
+      text: 'Com a Ticiana, consegui entender melhor minhas emoções e tomar decisões mais conscientes. Sua escuta atenta e profissionalismo fizeram toda a diferença na minha vida.',
       location: 'São Paulo, SP',
     },
     {
       name: 'Carla Oliveira',
       image: client3,
-      text: 'A Ticiana é uma profissional incrível! Ela me ajudou a ver a vida de uma forma diferente e a lidar com meus problemas de maneira mais saudável.',
+      text: 'A consulta com a Ticiana foi transformadora. Ela me ajudou a enxergar minhas dificuldades sob outra perspectiva e a desenvolver mais autoconfiança.',
       location: 'Fortaleza, CE',
     },
   ];
+
 
   // Handle scroll to update active index
   useEffect(() => {

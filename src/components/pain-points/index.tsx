@@ -33,7 +33,7 @@ export const PainPoints = () => {
       <S.CallToAction>
         Esses desafios <span>não precisam</span> definir sua vida. Com apoio profissional, você pode encontrar alívio e equilíbrio. <br /><br />Agende uma consulta e dê o <span>primeiro passo</span> para uma mente mais serena.
       </S.CallToAction>
-      <S.Button>
+      <S.Button href='https://wa.me/+5582996727126?text=Oi, quero agendar uma consulta.'>
         Agendar Consulta
       </S.Button>
     </S.PainPoints>

@@ -55,10 +55,11 @@ export const TestimonialsList = styled.div`
 export const TestimonialItem = styled.div<ActiveProps>`
   display: flex;
   flex-direction: column;
+  position: relative;
   gap: 12px;
   box-shadow: 3px 3px 3px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
-  padding: 24px;
+  padding: 32px 24px;
   flex: 0 0 80%;
   scroll-snap-align: center;
   transition: filter 0.2s ease, transform 0.2s ease;
@@ -79,11 +80,13 @@ export const TestimonialText = styled.p`
   line-height: 1.6;
 
   @media (max-width: ${breakpoints.mobile}) {
-    font-size: 16px;
+    font-size: 14px;
   }
 `;
 
 export const TestimonialLocation = styled.p`
+  position: absolute;
+  bottom: 16px;
   font-size: 14px;
   color: ${colors.text};
 `;

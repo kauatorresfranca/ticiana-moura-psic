@@ -10,8 +10,8 @@ import treatment_transtorno_estresse_pos_traumatico from '../../assets/images/tr
 
 export const Treatments = () => {
     return (
-        <S.Treatments>
-            <S.TreatmentsTitle>Tratamentos</S.TreatmentsTitle>
+        <S.Treatments id="Especialidades">
+            <S.TreatmentsTitle>Especialidades</S.TreatmentsTitle>
             <S.TreatmentsList>
                 <S.TreatmentItem>
                     <img src={treatment_ansiedade} alt="Tratamento 1" />
