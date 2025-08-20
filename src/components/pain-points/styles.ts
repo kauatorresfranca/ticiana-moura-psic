@@ -68,6 +68,11 @@ export const SymptomItem = styled.li`
     font-weight: 400;
     background-color: ${colors.primaryTransparent};
     color: ${colors.text};
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: scale(1.05);
+    }
   }
 `;
 

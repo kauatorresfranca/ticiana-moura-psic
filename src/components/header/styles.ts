@@ -33,12 +33,19 @@ export const HeaderMenu = styled.nav`
   }
 `;
 
-export const HeaderMenuItem = styled.a`
+export const HeaderMenuItem = styled.a<{ isActive: boolean }>`
   padding: 8px 16px;
   border-bottom: 4px solid transparent;
   color: ${colors.text};
   text-decoration: none;
   font-size: 18px;
+
+  ${({ isActive }) =>
+    isActive &&
+    `
+    border-bottom: 4px solid ${colors.primary};
+    color: ${colors.primary};
+  `}
   font-weight: 600;
   transition: 0.3s ease-in-out;
 

@@ -4,6 +4,7 @@ import logo from '../../assets/images/logo.png';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [activeItem, setActiveItem] = useState<string>('Início');
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,7 +23,9 @@ const Header = () => {
       <img src={logo} alt="Logo" />
       <S.HeaderMenu>
         {menuItems.map((item) => (
-          <S.HeaderMenuItem href={`#${item}`} key={item}>{item}</S.HeaderMenuItem>
+          <S.HeaderMenuItem isActive={activeItem === item} href={`#${item}`} key={item} onClick={() => setActiveItem(item)}>
+            {item}
+          </S.HeaderMenuItem>
         ))}
       </S.HeaderMenu>
       <S.HeaderActions>
@@ -38,7 +41,7 @@ const Header = () => {
       {isMenuOpen && (
         <S.HeaderMenuMobile>
           {menuItems.map((item) => (
-            <S.HeaderMenuItem href={`#${item}`} key={item} onClick={toggleMenu}>
+            <S.HeaderMenuItem isActive={activeItem === item} href={`#${item}`} key={item} onClick={() => { setActiveItem(item); toggleMenu(); }}>
               {item}
             </S.HeaderMenuItem>
           ))}

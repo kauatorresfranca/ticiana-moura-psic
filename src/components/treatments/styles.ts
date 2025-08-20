@@ -1,5 +1,6 @@
-import styled from "styled-components";
-import { breakpoints, colors } from "../../../styles";
+import { motion } from 'framer-motion';
+import styled from 'styled-components';
+import { breakpoints, colors } from '../../../styles';
 
 export const Treatments = styled.section`
   display: flex;
@@ -12,7 +13,7 @@ export const Treatments = styled.section`
     text-align: center;
   }
 
-   @media (max-width: ${breakpoints.mobile}) {
+  @media (max-width: ${breakpoints.mobile}) {
     padding: 40px 16px;
 
     h2 {
@@ -22,10 +23,10 @@ export const Treatments = styled.section`
 `;
 
 export const TreatmentsTitle = styled.h2`
-    font-size: 32px;
-    color: ${colors.title};
-    font-weight: 500;
-    text-align: center;
+  font-size: 32px;
+  color: ${colors.title};
+  font-weight: 500;
+  text-align: center;
 `;
 
 export const TreatmentsList = styled.ul`
@@ -38,7 +39,7 @@ export const TreatmentsList = styled.ul`
   }
 `;
 
-export const TreatmentItem = styled.li`
+export const TreatmentItem = styled(motion.li)`
   display: flex;
   flex-direction: column;
   align-items: center;

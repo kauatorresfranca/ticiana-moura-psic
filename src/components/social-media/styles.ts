@@ -28,6 +28,11 @@ export const SocialMediaLinks = styled.div`
 
 export const SocialMediaLink = styled.a`
   text-decoration: none;
+  transition: all 0.3s ease;
+
+  &:hover {
+    transform: scale(1.10);
+  }
 
   i {
     background-color: ${colors.primaryTransparent};

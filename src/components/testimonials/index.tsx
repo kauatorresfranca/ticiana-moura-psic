@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion, easeOut } from 'framer-motion';
 import * as S from './styles';
 import client1 from '../../assets/images/client1.jpg';
 import client2 from '../../assets/images/client2.jpg';
@@ -11,6 +12,27 @@ interface Testimonial {
   text: string;
   location: string;
 }
+
+// Animation variants for the TestimonialsList and TestimonialItem
+const listVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.3, // Stagger each TestimonialItem by 0.3s
+    },
+  },
+};
+
+const itemVariants = {
+  hidden: { opacity: 0, rotate: -10 }, // Start with slight rotation and invisible
+  visible: { opacity: 1, rotate: 0, transition: { duration: 0.7, ease: easeOut } }, // Fade in and rotate to normal
+};
+
+const indicatorVariants = {
+  hidden: { opacity: 0, scale: 0.5 },
+  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeOut } },
+};
 
 const Testimonials = () => {
   const [activeIndex, setActiveIndex] = useState<number>(0);
@@ -37,7 +59,6 @@ const Testimonials = () => {
       location: 'Fortaleza, CE',
     },
   ];
-
 
   // Handle scroll to update active index
   useEffect(() => {
@@ -76,11 +97,36 @@ const Testimonials = () => {
   };
 
   return (
-    <S.Testimonials>
-      <h2>O que meus pacientes dizem sobre mim:</h2>
-      <S.TestimonialsList ref={listRef}>
+    <S.Testimonials
+      as={motion.section}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      transition={{ duration: 0.5, ease: easeOut }}
+      viewport={{ once: true, amount: 0.2 }}
+    >
+      <motion.h2
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, ease: easeOut }}
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        O que meus pacientes dizem sobre mim:
+      </motion.h2>
+      <S.TestimonialsList
+        as={motion.div}
+        variants={listVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+        ref={listRef}
+      >
         {testimonials.map((testimonial, index: number) => (
-          <S.TestimonialItem key={index} active={index === activeIndex}>
+          <S.TestimonialItem
+            as={motion.div}
+            variants={itemVariants}
+            key={index}
+            active={index === activeIndex}
+          >
             <S.TestimonialAuthor>
               <S.TestimonialAuthorImage src={testimonial.image} alt={testimonial.name} />
               <S.TestimonialAuthorContent>
@@ -97,9 +143,17 @@ const Testimonials = () => {
           </S.TestimonialItem>
         ))}
       </S.TestimonialsList>
-      <S.Indicators>
+      <S.Indicators
+        as={motion.div}
+        variants={listVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
         {testimonials.map((_, index: number) => (
           <S.Indicator
+            as={motion.div}
+            variants={indicatorVariants}
             key={index}
             active={index === activeIndex}
             onClick={() => scrollToIndex(index)}
