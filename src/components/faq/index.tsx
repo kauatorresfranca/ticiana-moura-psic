@@ -8,7 +8,7 @@ const FAQ = () => {
     {
       question: 'Como agendar uma consulta?',
       answer:
-        'Você pode agendar uma consulta diretamente pelo WhatsApp ou telefone. Basta entrar em contato para verificar disponibilidade em Maceió ou Coruripe.',
+        'Você pode agendar uma consulta diretamente pelo WhatsApp ou telefone. Basta entrar em contato para verificar disponibilidade para atendimento online ou presencial em Maceió ou Coruripe.',
     },
     {
       question: 'Quais são os métodos de pagamento?',

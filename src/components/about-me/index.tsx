@@ -69,7 +69,7 @@ const AboutMe = () => {
           transition={{ duration: 0.5, ease: easeOut, delay: 0.2 }}
           viewport={{ once: true, amount: 0.2 }}
         >
-          Sou Ticiana Moura, psicóloga com mais de 20 anos de experiência, comprometida em promover o bem-estar emocional por meio de empatia e escuta ativa. Atuo presencialmente em Maceió e Coruripe, oferecendo atendimentos baseados em estratégias personalizadas e fundamentados em evidências, com enfoque na Gestalt Terapia. Minha trajetória abrange atendimento ambulatorial em atenção básica, suporte hospitalar, coordenação de saúde mental em hospital de urgência e emergência, atendimento a servidores estaduais da saúde e prática clínica em consultório particular, sempre priorizando inovação e cuidado humano. Acredito que o autoconhecimento é a chave para superar bloqueios e construir uma vida mais leve e equilibrada.
+          Sou Ticiana Moura, psicóloga com mais de 20 anos de experiência, comprometida em promover o bem-estar emocional por meio de empatia e escuta ativa. Atuo com atendimentos online e presencialmente em Maceió e Coruripe, oferecendo atendimentos baseados em estratégias personalizadas e fundamentados em evidências, com enfoque na Gestalt Terapia. Minha trajetória abrange atendimento ambulatorial em atenção básica, suporte hospitalar, coordenação de saúde mental em hospital de urgência e emergência, atendimento a servidores estaduais da saúde e prática clínica em consultório particular, sempre priorizando inovação e cuidado humano. Acredito que o autoconhecimento é a chave para superar bloqueios e construir uma vida mais leve e equilibrada.
         </S.AboutMeDescription>
         <S.AboutMeTraining
           as={motion.div}

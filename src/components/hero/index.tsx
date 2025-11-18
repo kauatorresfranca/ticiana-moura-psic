@@ -20,7 +20,7 @@ export const Hero = () => {
       >
         <S.HeroTitle>Redescubra o Equilíbrio Emocional e Viva com Leveza</S.HeroTitle>
         <S.HeroDescription>
-          Com psicoterapia humanizada e baseada em evidências, transforme sua relação com as emoções. Atendimento acolhedor e confidencial – estou aqui para te guiar no caminho do autoconhecimento.
+          Com psicoterapia humanizada e baseada em evidências, transforme sua relação com as emoções sem sair de casa. Atendimento acolhedor e confidencial – estou aqui para te guiar no caminho do autoconhecimento.
         </S.HeroDescription>
         <S.HeroButton href="https://wa.me/+5582996727126?text=Oi, gostaria de agendar uma consulta.">
           <i className="ri-wechat-line"></i> Agendar Atendimento
