@@ -41,7 +41,7 @@ export const HeroTitle = styled.h1`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 36px;
+    font-size: 40px;
   }
 `
 
@@ -90,7 +90,7 @@ export const ImageContainer = styled.div`
 
   img {
     width: 100%;
-    max-width: 450px;
+    max-width: 400px;
     height: auto;
     border-radius: 20px;
   }

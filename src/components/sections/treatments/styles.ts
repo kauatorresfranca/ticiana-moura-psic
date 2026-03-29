@@ -68,6 +68,7 @@ export const TreatmentItem = styled.div`
   transition: all 0.3s ease;
   border: 1px solid #f0f0f0;
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  border-color: ${colors.primaryTransparent};
 
   .icon-box {
     width: 80px;

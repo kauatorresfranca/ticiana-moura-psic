@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion'
 import * as S from './styles'
-import HeroImage from '../../../assets/images/heroImage.png'
+import HeroImage from '../../../assets/images/heroImage2.jpeg'
 import { MessageCircle } from 'lucide-react'
 
 export const Hero = () => {
