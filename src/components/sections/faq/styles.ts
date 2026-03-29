@@ -1,90 +1,93 @@
-import styled from "styled-components";
-import { breakpoints, colors } from "../../../../styles";
+import styled from 'styled-components'
+import { breakpoints, colors } from '../../../../styles'
+import { motion } from 'framer-motion'
 
-export const FAQ = styled.div`
+export const FAQSection = styled.section`
+  padding: 100px 0;
+  background-color: #fff;
+
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+`
+
+export const Title = styled.h2`
+  font-size: 36px;
+  color: ${colors.title};
+  font-weight: 800;
+  text-align: center;
+  margin-bottom: 12px;
+`
+
+export const Subtitle = styled.p`
+  font-size: 18px;
+  color: ${colors.text};
+  text-align: center;
+  margin-bottom: 48px;
+`
+
+export const FAQList = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 32px;
-  padding: 60px 40px;
+  gap: 16px;
+`
 
-  h2 {
-    font-size: 32px;
-    color: ${colors.title};
-    font-weight: 500;
-    text-align: center;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    padding: 32px 16px;
-  }
-`;
-
-export const FAQList = styled.ul`
-  list-style: none;
-  padding: 0;
-`;
-
-export const FAQItem = styled.li`
-  border-bottom: 1px solid ${colors.text}20; // Mais sutil com transparência
-  padding: 16px 0;
-  transition: box-shadow 0.3s ease;
+export const FAQItem = styled.div`
+  border-radius: 16px;
+  background-color: #fcfcfc;
+  border: 1px solid #f0f0f0;
+  overflow: hidden;
+  transition: all 0.3s ease;
 
   &:hover {
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05); // Sombra suave para modernidade
+    border-color: ${colors.primary}40;
   }
+`
 
-  &:last-child {
-    border-bottom: none;
-  }
-`;
-
-export const FAQQuestion = styled.h3`
+export const FAQQuestion = styled.button`
+  width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 16px;
-  font-size: 18px;
-  color: ${colors.title};
-  font-weight: 500;
-  background-color: #f9f9f9; // Fundo claro para destaque moderno
-  border-radius: 8px;
+  padding: 24px;
+  background: none;
+  border: none;
   cursor: pointer;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  text-align: left;
+  font-size: 18px;
+  font-weight: 600;
+  color: ${colors.title};
+  transition: all 0.3s ease;
 
-  i {
-    font-size: 20px;
+  .icon {
+    color: ${colors.primary};
     transition: transform 0.3s ease;
-    color: ${colors.primary};
-  }
-
-  &:hover {
-    background-color: #e9e9e9;
-    color: ${colors.primary};
   }
 
   &.active {
-    background-color: ${colors.primaryTransparent};
     color: ${colors.primary};
-
-    i {
-      transform: rotate(180deg); // Rotação para seta para cima
+    background-color: ${colors.primaryTransparent};
+    
+    .icon {
+      transform: rotate(180deg);
     }
   }
-`;
 
-export const FAQAnswer = styled.p`
-  max-height: 0;
-  overflow: hidden;
-  font-size: 16px;
-  color: ${colors.text};
-  margin-top: 8px;
-  padding: 0 16px;
-  transition: max-height 0.5s ease, opacity 0.3s ease, padding 0.3s ease;
-  opacity: 0;
-
-  &.active {
-    max-height: 200px; // Ajuste conforme o conteúdo; permite expansão suave
-    opacity: 1;
-    padding: 12px 16px;
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 16px;
+    padding: 20px;
   }
-`;
+`
+
+export const FAQAnswer = styled(motion.div)`
+  overflow: hidden;
+
+  .answer-content {
+    padding: 24px 24px;
+    font-size: 16px;
+    line-height: 1.6;
+    color: ${colors.text};
+  }
+`
