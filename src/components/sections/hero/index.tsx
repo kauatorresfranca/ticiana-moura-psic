@@ -1,42 +1,47 @@
-import { motion } from 'framer-motion';
-import * as S from './styles';
-import HeroImage from '../../../assets/images/heroImage.png';
+import { motion } from 'framer-motion'
+import * as S from './styles'
+import HeroImage from '../../../assets/images/heroImage.png'
+import { MessageCircle } from 'lucide-react'
 
 export const Hero = () => {
   return (
-    <S.Hero
-      as={motion.section}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: 'easeOut' }}
-      viewport={{ once: true, amount: 0.2 }} // Ensures animation runs only the first time the section is visible
-    >
-      <S.HeroContent
-        as={motion.div}
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.2 }}
-        viewport={{ once: true, amount: 0.2 }} // Consistent single-run behavior
-      >
-        <S.HeroTitle>Redescubra o Equilíbrio Emocional e Viva com Leveza</S.HeroTitle>
-        <S.HeroDescription>
-          Com psicoterapia humanizada e baseada em evidências, transforme sua relação com as emoções sem sair de casa. Atendimento acolhedor e confidencial – estou aqui para te guiar no caminho do autoconhecimento.
-        </S.HeroDescription>
-        <S.HeroButton href="https://wa.me/+5582996727126?text=Oi, gostaria de agendar uma consulta.">
-          <i className="ri-wechat-line"></i> Agendar Atendimento
-        </S.HeroButton>
-      </S.HeroContent>
-      <S.HeroImage
-        as={motion.img}
-        initial={{ opacity: 0, x: -100 }}
-        whileInView={{ opacity: 1, x: 0 }}
-        transition={{ duration: 0.8, ease: 'easeOut', delay: 0.4 }}
-        viewport={{ once: true, amount: 0.2 }} // Consistent single-run behavior
-        src={HeroImage}
-        alt="Imagem de equilíbrio emocional"
-      />
-    </S.Hero>
-  );
-};
+    <S.HeroSection id="inicio">
+      <div className="container">
+        <S.HeroContent>
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+            viewport={{ once: true }}
+          >
+            <S.HeroTitle>
+              Redescubra o <span>Equilíbrio Emocional</span> e Viva com Leveza
+            </S.HeroTitle>
+            <S.HeroDescription>
+              Transforme sua relação com as emoções sem sair de casa. Atendimento acolhedor e confidencial.
+            </S.HeroDescription>
+            <S.HeroButton 
+              href="https://wa.me/+5582996727126?text=Oi, gostaria de agendar uma consulta."
+              target="_blank"
+            >
+              <MessageCircle size={20} />
+              Agendar Atendimento
+            </S.HeroButton>
+          </motion.div>
 
-export default Hero;
+          <S.ImageContainer
+            as={motion.div}
+            initial={{ opacity: 0, scale: 0.9 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            viewport={{ once: true }}
+          >
+            <img src={HeroImage} alt="Imagem de equilíbrio emocional - Psicologia" />
+          </S.ImageContainer>
+        </S.HeroContent>
+      </div>
+    </S.HeroSection>
+  )
+}
+
+export default Hero

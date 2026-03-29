@@ -1,75 +1,110 @@
-import styled from 'styled-components';
-import { colors } from '../../../../styles';
+import styled from 'styled-components'
+import { colors, breakpoints } from '../../../../styles'
 
-export const Hero = styled.section`
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+export const HeroSection = styled.section`
+  padding: 80px 0;
+  background-color: #fff;
+  overflow: hidden;
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: center;
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
     padding: 0 16px;
   }
-`;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 40px 0;
+  }
+`
 
 export const HeroContent = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: start;
-  max-width: 500px;
-  width: 100%;
-`;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: center;
+  gap: 40px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+`
 
 export const HeroTitle = styled.h1`
-  font-size: 32px;
-  color: ${colors.primary};
-  font-weight: 700;
+  font-size: 46px;
+  line-height: 1.1;
+  color: ${colors.title};
+  font-weight: 800;
   margin-bottom: 24px;
-`;
+
+  span {
+    color: ${colors.primary};
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 36px;
+  }
+`
 
 export const HeroDescription = styled.p`
   font-size: 18px;
+  line-height: 1.6;
   color: ${colors.text};
-  margin-bottom: 24px;
-`;
+  margin-bottom: 32px;
+  max-width: 480px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    margin: 0 auto 32px;
+  }
+`
 
 export const HeroButton = styled.a`
-  background-color: ${colors.primaryTransparent};
-  color: ${colors.title};
-  padding: 12px 24px;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background-color: ${colors.primary};
+  color: #fff;
+  padding: 16px 32px;
+  border-radius: 50px;
+  font-weight: 700;
   font-size: 16px;
-  font-weight: 600;
   text-decoration: none;
-  transition: 0.4s ease;
-
-  i {
-    color: ${colors.title};
-    font-size: 18px;
-    font-weight: 500;
-  }
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px ${colors.primary}40;
 
   &:hover {
-    background-color: ${colors.primary};
-    transform: scale(1.05);
-  }
-`;
-
-export const HeroImage = styled.img`
-  width: 100%;
-  max-width: 350px;
-  height: auto;
-  border-radius: 10px;
-  object-fit: cover;
-
-  @media (min-width: 768px) {
-    max-width: 45%;
+    transform: translateY(-3px);
+    box-shadow: 0 12px 25px ${colors.primary}60;
+    filter: brightness(1.1);
   }
 
-  @media (min-width: 1200px) {
-    max-width: 500px;
+  @media (max-width: ${breakpoints.tablet}) {
+    width: 100%;
+    justify-content: center;
   }
-`;
+`
+
+export const ImageContainer = styled.div`
+  position: relative;
+  display: flex;
+  justify-content: center;
+
+  img {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    border-radius: 20px;
+  }
+
+  /* Detalhe decorativo sutil atrás da imagem, como na Ótica */
+  &::before {
+    content: '';
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 100px;
+    height: 100px;
+    background-color: ${colors.primaryTransparent};
+    border-radius: 50%;
+    z-index: -1;
+  }
+`

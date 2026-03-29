@@ -1,114 +1,136 @@
-import styled from 'styled-components';
-import { breakpoints, colors } from '../../../../styles';
+import styled from 'styled-components'
+import { breakpoints, colors } from '../../../../styles'
 
-export const PainPoints = styled.section`
+export const PainPointsSection = styled.section`
+  padding: 80px 0;
+  background-color: #fcfcfc;
+  
+  .container {
+    max-width: 1024px;
+    margin: 0 auto;
+    padding: 0 16px;
+  }
+`
+
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 48px 16px;
-  background-color: #f9f9f9;
   text-align: center;
+`
 
-  @media (min-width: ${breakpoints.tablet}) {
-    padding: 64px 32px;
-  }
-`;
-
-export const PainPointsTitle = styled.h2`
-  font-size: 24px;
+export const Title = styled.h2`
+  font-size: 32px;
   color: ${colors.title};
-  font-weight: 700;
-  margin-bottom: 16px;
+  font-weight: 800;
+  max-width: 800px;
+  margin-bottom: 20px;
+  line-height: 1.2;
 
   span {
     color: ${colors.primary};
   }
-`;
 
-export const PainPointsText = styled.p`
-  font-size: 16px;
-  color: #666;
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 26px;
+  }
+`
+
+export const Subtitle = styled.p`
+  font-size: 18px;
+  color: ${colors.text};
   line-height: 1.6;
-  max-width: 800px;
-  margin-bottom: 2rem;
+  max-width: 700px;
+  margin-bottom: 48px;
+`
 
-  @media (min-width: ${breakpoints.tablet}) {
-    font-size: 18px;
+export const SymptomsList = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 24px;
+  width: 100%;
+  margin-bottom: 56px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
   }
-`;
 
-export const SymptomsList = styled.ul`
-  list-style: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 1.5rem;
-  margin-bottom: 2rem;
-
-  @media (min-width: ${breakpoints.tablet}) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2rem;
+  @media (max-width: ${breakpoints.mobile}) {
+    grid-template-columns: 1fr;
   }
-`;
+`
 
-export const SymptomItem = styled.li`
+export const SymptomItem = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  max-width: 250px;
 
-  img {
-    width: 142px;
-    padding: 30px;
-    border-radius: 50%;
-    font-size: 80px;
-    font-weight: 400;
+  .icon-wrapper {
+    width: 120px;
+    height: 120px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-color: ${colors.primaryTransparent};
-    color: ${colors.text};
+    border-radius: 50%;
     transition: all 0.3s ease;
 
-    &:hover {
-      transform: scale(1.05);
+    img {
+      width: 60px;
+      height: auto;
     }
   }
-`;
+
+  &:hover .icon-wrapper {
+    transform: translateY(-5px);
+    background-color: ${colors.primary};
+    img { filter: brightness(0) invert(1); }
+  }
+`
 
 export const SymptomText = styled.span`
-  font-size: 1rem;
-  color: #333;
-  font-weight: 500;
-`;
-
-export const CallToAction = styled.p`
-  font-size: 1.1rem;
-  color: ${colors.text};
+  font-size: 16px;
+  color: ${colors.title};
   font-weight: 600;
-  max-width: 600px;
+  line-height: 1.4;
+`
 
-  span {
-    color: ${colors.primary}}
-`;
+export const CTAWrapper = styled.div`
+  p {
+    font-size: 20px;
+    color: ${colors.title};
+    font-weight: 500;
+    margin-bottom: 32px;
+    
+    span {
+      font-weight: 700;
+      color: ${colors.primary};
+    }
+  }
+`
 
 export const Button = styled.a`
-  margin-top: 16px;
-  background-color: transparent;
-  color: ${colors.text};
-  padding: 12px 24px;
-  border: 3px solid ${colors.primary};
-  border-radius: 10px;
-  cursor: pointer;
+  display: inline-block;
+  background-color: ${colors.primary};
+  color: #fff;
+  padding: 18px 40px;
+  border-radius: 50px;
+  font-weight: 700;
   font-size: 16px;
-  font-weight: 600;
   text-decoration: none;
-  transition: 0.4s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 10px 20px ${colors.primary}40;
 
   &:hover {
-    background-color: ${colors.primaryTransparent};
-    color: #fff;
-    border: 3px solid transparent;
     transform: scale(1.05);
+    filter: brightness(1.1);
+    box-shadow: 0 12px 25px ${colors.primary}60;
+  }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    width: 100%;
+    padding: 18px 20px;
   }
 `
