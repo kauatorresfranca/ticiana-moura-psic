@@ -1,9 +1,9 @@
 import { useState, useEffect, useRef } from 'react';
 import { motion, easeOut } from 'framer-motion';
 import * as S from './styles';
-import client1 from '../../assets/images/client1.jpg';
-import client2 from '../../assets/images/client2.jpg';
-import client3 from '../../assets/images/client3.jpg';
+import client1 from '../../../assets/images/client1.jpg';
+import client2 from '../../../assets/images/client2.jpg';
+import client3 from '../../../assets/images/client3.jpg';
 
 // Define the testimonial data type
 interface Testimonial {

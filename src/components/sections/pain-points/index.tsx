@@ -1,9 +1,9 @@
 import { motion, easeOut } from 'framer-motion';
 import * as S from './styles';
-import ansiedade from '../../assets/images/ansiedade.png';
-import preocupacao from '../../assets/images/preocucacao.png';
-import estresse from '../../assets/images/estresse.png';
-import autoestima from '../../assets/images/autoestima.png';
+import ansiedade from '../../../assets/images/ansiedade.png';
+import preocupacao from '../../../assets/images/preocucacao.png';
+import estresse from '../../../assets/images/estresse.png';
+import autoestima from '../../../assets/images/autoestima.png';
 
 // Animation variants for the SymptomsList and SymptomItem
 const listVariants = {

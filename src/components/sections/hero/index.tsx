@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import * as S from './styles';
-import HeroImage from '../../assets/images/heroImage.png';
+import HeroImage from '../../../assets/images/heroImage.png';
 
 export const Hero = () => {
   return (

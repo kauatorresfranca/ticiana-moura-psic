@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { breakpoints, colors } from '../../../styles';
+import { breakpoints, colors } from '../../../../styles';
 
 // Define props interface for components with active prop
 interface ActiveProps {

@@ -1,6 +1,6 @@
 import { motion, easeOut } from 'framer-motion';
 import * as S from './styles';
-import AboutMeImage from '../../assets/images/aboutMeImage.jpg';
+import AboutMeImage from '../.././../assets/images/aboutMeImage.jpg';
 
 // Animation variants for AboutMeTrainingList and its li elements
 const trainingListVariants = {
