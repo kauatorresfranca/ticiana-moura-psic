@@ -65,7 +65,7 @@ export const Nav = styled.nav<{ isOpen: boolean }>`
   }
 `
 
-export const HeaderMenuItem = styled.a<{ isActive: boolean }>`
+export const HeaderMenuItem = styled.a`
   color: ${colors.text};
   font-weight: 600;
   font-size: 15px;
@@ -79,7 +79,6 @@ export const HeaderMenuItem = styled.a<{ isActive: boolean }>`
     position: absolute;
     bottom: 0;
     left: 0;
-    width: ${props => (props.isActive ? '100%' : '0')};
     height: 2px;
     background-color: ${colors.primary};
     transition: width 0.3s ease;

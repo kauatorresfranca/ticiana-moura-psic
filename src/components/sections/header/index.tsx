@@ -5,7 +5,6 @@ import { Menu, X } from 'lucide-react'
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
-  const [activeItem, setActiveItem] = useState<string>('Início')
 
   const menuItems = [
     'Início',
@@ -14,10 +13,6 @@ const Header = () => {
     'Dúvidas',
   ]
 
-  const handleLinkClick = (item: string) => {
-    setActiveItem(item)
-    setIsMenuOpen(false)
-  }
 
   return (
     <S.HeaderWrapper>
@@ -33,9 +28,7 @@ const Header = () => {
               {menuItems.map((item) => (
                 <li key={item}>
                   <S.HeaderMenuItem 
-                    isActive={activeItem === item} 
                     href={`#${item.toLowerCase().replace(' ', '-')}`}
-                    onClick={() => handleLinkClick(item)}
                   >
                     {item}
                   </S.HeaderMenuItem>
