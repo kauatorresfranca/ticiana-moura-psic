@@ -1,31 +1,38 @@
-import AboutMe from "./components/sections/about-me"
-import FAQ from "./components/sections/faq"
-import Footer from "./components/sections/footer"
+import { Suspense, lazy } from 'react'
 import Header from "./components/sections/header"
 import Hero from "./components/sections/hero"
-import PainPoints from "./components/sections/pain-points"
-import Testimonials from "./components/sections/testimonials"
-import Treatments from "./components/sections/treatments/index."
-import WhatsAppButton from "./components/wpp-button"
 
+// Carregamento Tardio (Lazy Loading) para seções "abaixo da dobra"
+const PainPoints = lazy(() => import("./components/sections/pain-points"))
+const AboutMe = lazy(() => import("./components/sections/about-me"))
+const Treatments = lazy(() => import("./components/sections/treatments/index."))
+const Testimonials = lazy(() => import("./components/sections/testimonials"))
+const FAQ = lazy(() => import("./components/sections/faq"))
+const Footer = lazy(() => import("./components/sections/footer"))
+const WhatsAppButton = lazy(() => import("./components/wpp-button"))
 
 function App() {
-  
-
   return (
-    <div>
+    <>
       <Header />
-      <div className="container">
+      <main>
+        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido */}
         <Hero />
-        <PainPoints />
-        <AboutMe /> 
-        <Treatments />
-        <Testimonials />
-        <FAQ />
-        <Footer />
-        <WhatsAppButton />
-      </div>
-    </div>
+        
+        {/* O Suspense gerencia o carregamento das outras seções em segundo plano */}
+        <Suspense fallback={null}>
+          <div className="container">
+            <PainPoints />
+            <AboutMe /> 
+            <Treatments />
+            <Testimonials />
+            <FAQ />
+            <Footer />
+          </div>
+          <WhatsAppButton />
+        </Suspense>
+      </main>
+    </>
   )
 }
 
