@@ -1,167 +1,72 @@
-import { useState, useEffect, useRef } from 'react';
-import { motion, easeOut } from 'framer-motion';
-import * as S from './styles';
-import client1 from '../../../assets/images/client1.jpg';
-import client2 from '../../../assets/images/client2.jpg';
-import client3 from '../../../assets/images/client3.jpg';
+import { motion } from 'framer-motion'
+import * as S from './styles'
+import client1 from '../../../assets/images/client1.jpg'
+import client2 from '../../../assets/images/client2.jpg'
+import client3 from '../../../assets/images/client3.jpg'
+import { Quote, Star } from 'lucide-react'
 
-// Define the testimonial data type
-interface Testimonial {
-  name: string;
-  image: string;
-  text: string;
-  location: string;
-}
-
-// Animation variants for the TestimonialsList and TestimonialItem
-const listVariants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.3, // Stagger each TestimonialItem by 0.3s
-    },
+const testimonials = [
+  {
+    name: 'Maria Silva',
+    image: client2,
+    text: 'A Ticiana me ajudou a encontrar equilíbrio emocional e a lidar com momentos difíceis de forma muito mais leve. Sou extremamente grata pelo cuidado e atenção que ela oferece.',
+    location: 'Maceió, AL',
   },
-};
-
-const itemVariants = {
-  hidden: { opacity: 0, rotate: -10 }, // Start with slight rotation and invisible
-  visible: { opacity: 1, rotate: 0, transition: { duration: 0.7, ease: easeOut } }, // Fade in and rotate to normal
-};
-
-const indicatorVariants = {
-  hidden: { opacity: 0, scale: 0.5 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 0.5, ease: easeOut } },
-};
+  {
+    name: 'José Carlos',
+    image: client1,
+    text: 'Com a Ticiana, consegui entender melhor minhas emoções e tomar decisões mais conscientes. Sua escuta atenta e profissionalismo fizeram toda a diferença na minha vida.',
+    location: 'São Paulo, SP',
+  },
+  {
+    name: 'Carla Oliveira',
+    image: client3,
+    text: 'A consulta com a Ticiana foi transformadora. Ela me ajudou a enxergar minhas dificuldades sob outra perspectiva e a desenvolver mais autoconfiança.',
+    location: 'Fortaleza, CE',
+  },
+]
 
 const Testimonials = () => {
-  const [activeIndex, setActiveIndex] = useState<number>(0);
-  const listRef = useRef<HTMLDivElement>(null);
-
-  // Testimonial data
-  const testimonials: Testimonial[] = [
-    {
-      name: 'Maria Silva',
-      image: client2,
-      text: 'A Ticiana me ajudou a encontrar equilíbrio emocional e a lidar com momentos difíceis de forma muito mais leve. Sou extremamente grata pelo cuidado e atenção que ela oferece.',
-      location: 'Maceió, AL',
-    },
-    {
-      name: 'José Carlos',
-      image: client1,
-      text: 'Com a Ticiana, consegui entender melhor minhas emoções e tomar decisões mais conscientes. Sua escuta atenta e profissionalismo fizeram toda a diferença na minha vida.',
-      location: 'São Paulo, SP',
-    },
-    {
-      name: 'Carla Oliveira',
-      image: client3,
-      text: 'A consulta com a Ticiana foi transformadora. Ela me ajudou a enxergar minhas dificuldades sob outra perspectiva e a desenvolver mais autoconfiança.',
-      location: 'Fortaleza, CE',
-    },
-  ];
-
-  // Handle scroll to update active index
-  useEffect(() => {
-    const list = listRef.current;
-    if (!list) return;
-
-    let scrollTimeout: ReturnType<typeof setTimeout>;
-
-    const handleScroll = () => {
-      // Debounce scroll updates
-      clearTimeout(scrollTimeout);
-      scrollTimeout = setTimeout(() => {
-        const scrollLeft = list.scrollLeft;
-        const itemWidth = list.offsetWidth * 0.8; // Account for flex: 0 0 80%
-        const newIndex = Math.round(scrollLeft / itemWidth);
-        if (newIndex !== activeIndex && newIndex >= 0 && newIndex < testimonials.length) {
-          setActiveIndex(newIndex);
-        }
-      }, 100); // Adjust debounce delay as needed
-    };
-
-    list.addEventListener('scroll', handleScroll);
-    return () => {
-      clearTimeout(scrollTimeout);
-      list.removeEventListener('scroll', handleScroll);
-    };
-  }, [activeIndex, testimonials.length]);
-
-  // Handle dot click
-  const scrollToIndex = (index: number) => {
-    const list = listRef.current;
-    if (!list) return;
-    const itemWidth = list.offsetWidth * 0.8; // Account for flex: 0 0 80%
-    list.scrollTo({ left: index * itemWidth, behavior: 'smooth' });
-    setActiveIndex(index);
-  };
-
   return (
-    <S.Testimonials
-      as={motion.section}
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      transition={{ duration: 0.5, ease: easeOut }}
-      viewport={{ once: true, amount: 0.2 }}
-    >
-      <motion.h2
-        initial={{ opacity: 0, y: -20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.5, ease: easeOut }}
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        O que meus pacientes dizem sobre mim:
-      </motion.h2>
-      <S.TestimonialsList
-        as={motion.div}
-        variants={listVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-        ref={listRef}
-      >
-        {testimonials.map((testimonial, index: number) => (
-          <S.TestimonialItem
-            as={motion.div}
-            variants={itemVariants}
-            key={index}
-            active={index === activeIndex}
-          >
-            <S.TestimonialAuthor>
-              <S.TestimonialAuthorImage src={testimonial.image} alt={testimonial.name} />
-              <S.TestimonialAuthorContent>
-                <S.TestimonialAuthorName>{testimonial.name}</S.TestimonialAuthorName>
-                <S.TestimonialAuthorReview>
-                  {[...Array(5)].map((_, i) => (
-                    <i key={i} className="ri-star-fill"></i>
-                  ))}
-                </S.TestimonialAuthorReview>
-              </S.TestimonialAuthorContent>
-            </S.TestimonialAuthor>
-            <S.TestimonialText>{testimonial.text}</S.TestimonialText>
-            <S.TestimonialLocation>{testimonial.location}</S.TestimonialLocation>
-          </S.TestimonialItem>
-        ))}
-      </S.TestimonialsList>
-      <S.Indicators
-        as={motion.div}
-        variants={listVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.2 }}
-      >
-        {testimonials.map((_, index: number) => (
-          <S.Indicator
-            as={motion.div}
-            variants={indicatorVariants}
-            key={index}
-            active={index === activeIndex}
-            onClick={() => scrollToIndex(index)}
-          />
-        ))}
-      </S.Indicators>
-    </S.Testimonials>
-  );
-};
+    <S.TestimonialsSection id="depoimentos">
+      <div className="container">
+        <S.Header>
+          <S.Title>O que meus pacientes dizem</S.Title>
+          <p>Histórias reais de quem reencontrou o equilíbrio através da terapia.</p>
+        </S.Header>
 
-export default Testimonials;
+        <S.TestimonialsGrid
+          as={motion.div}
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          {testimonials.map((item, index) => (
+            <S.TestimonialCard key={index}>
+              <S.QuoteIcon>
+                <Quote size={32} fill="currentColor" />
+              </S.QuoteIcon>
+              
+              <S.TestimonialText>"{item.text}"</S.TestimonialText>
+
+              <S.AuthorArea>
+                <S.AuthorImage src={item.image} alt={item.name} />
+                <S.AuthorInfo>
+                  <S.AuthorName>{item.name}</S.AuthorName>
+                  <S.StarsWrapper>
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} size={14} fill="#FFC107" color="#FFC107" />
+                    ))}
+                  </S.StarsWrapper>
+                  <S.Location>{item.location}</S.Location>
+                </S.AuthorInfo>
+              </S.AuthorArea>
+            </S.TestimonialCard>
+          ))}
+        </S.TestimonialsGrid>
+      </div>
+    </S.TestimonialsSection>
+  )
+}
+
+export default Testimonials
