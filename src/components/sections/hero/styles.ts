@@ -3,14 +3,7 @@ import { colors, breakpoints } from '../../../../styles'
 
 export const HeroSection = styled.section`
   padding: 80px 0;
-  background-color: #fff;
   overflow: hidden;
-
-  .container {
-    max-width: 1024px;
-    margin: 0 auto;
-    padding: 0 16px;
-  }
 
   @media (max-width: ${breakpoints.tablet}) {
     padding: 40px 0;
@@ -20,7 +13,7 @@ export const HeroSection = styled.section`
 export const HeroContent = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr;
-  align-items: center;
+  align-items: center; /* CORREÇÃO: Alinha verticalmente os elementos de forma simétrica */
   gap: 40px;
 
   @media (max-width: ${breakpoints.tablet}) {
@@ -31,7 +24,7 @@ export const HeroContent = styled.div`
 
 export const HeroTitle = styled.h1`
   font-size: 46px;
-  line-height: 1.1;
+  line-height: 1.15;
   color: ${colors.title};
   font-weight: 800;
   margin-bottom: 24px;
@@ -41,7 +34,7 @@ export const HeroTitle = styled.h1`
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 40px;
+    font-size: 32px;
   }
 `
 
@@ -53,7 +46,8 @@ export const HeroDescription = styled.p`
   max-width: 480px;
 
   @media (max-width: ${breakpoints.tablet}) {
-    margin: 0 auto 32px;
+    font-size: 16px;
+    margin: 0 auto 24px;
   }
 `
 
@@ -64,7 +58,7 @@ export const HeroButton = styled.a`
   background-color: ${colors.primary};
   color: #fff;
   padding: 16px 32px;
-  border-radius: 50px;
+  border-radius: 18px;
   font-weight: 700;
   font-size: 16px;
   text-decoration: none;
@@ -83,6 +77,32 @@ export const HeroButton = styled.a`
   }
 `
 
+export const HeroBadges = styled.div`
+  display: flex;
+  gap: 16px;
+  margin-top: 24px;
+  flex-wrap: wrap;
+
+  .badge {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    color: ${colors.text};
+    font-size: 13px;
+    font-weight: 500;
+    
+    svg {
+      color: ${colors.primary};
+    }
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    justify-content: center;
+    gap: 12px;
+    margin-top: 20px;
+  }
+`
+
 export const ImageContainer = styled.div`
   position: relative;
   display: flex;
@@ -92,19 +112,14 @@ export const ImageContainer = styled.div`
     width: 100%;
     max-width: 400px;
     height: auto;
-    border-radius: 20px;
+    border-radius: 18px;
   }
 
-  /* Detalhe decorativo sutil atrás da imagem, como na Ótica */
-  &::before {
-    content: '';
-    position: absolute;
-    top: -20px;
-    right: -20px;
-    width: 100px;
-    height: 100px;
-    background-color: ${colors.primaryTransparent};
-    border-radius: 50%;
-    z-index: -1;
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-row: 1;
+    
+    img {
+      max-width: 280px;
+    }
   }
 `

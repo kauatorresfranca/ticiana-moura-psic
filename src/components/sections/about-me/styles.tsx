@@ -3,10 +3,8 @@ import { breakpoints, colors } from '../../../../styles'
 
 export const AboutSection = styled.section`
   padding: 100px 0;
-  background-color: #fff;
 
   .container {
-    max-width: 1024px;
     margin: 0 auto;
     padding: 0 16px;
   }

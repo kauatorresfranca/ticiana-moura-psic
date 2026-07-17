@@ -4,7 +4,6 @@ import { motion } from 'framer-motion'
 
 export const FAQSection = styled.section`
   padding: 100px 0;
-  background-color: #fff;
 
   .container {
     max-width: 800px;

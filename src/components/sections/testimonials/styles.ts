@@ -3,7 +3,6 @@ import { breakpoints, colors } from '../../../../styles'
 
 export const TestimonialsSection = styled.section`
   padding: 100px 0;
-  background-color: #fff;
 
   .container {
     max-width: 1140px;

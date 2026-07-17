@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
-import { MessageCircle } from 'lucide-react'
+import { MessageCircle, ShieldCheck, Video, ShieldAlert } from 'lucide-react'
 
 export const Hero = () => {
   return (
@@ -15,18 +15,32 @@ export const Hero = () => {
             viewport={{ once: true }}
           >
             <S.HeroTitle>
-              Redescubra o <span>Equilíbrio Emocional</span> e Viva com Leveza
+              Um espaço seguro para cuidar da sua <span>saúde emocional</span>.
             </S.HeroTitle>
             <S.HeroDescription>
-              Transforme sua relação com as emoções sem sair de casa. Atendimento acolhedor e confidencial.
+              Ajudo você a enfrentar a ansiedade, o estresse e os desafios da vida com mais equilíbrio e qualidade de vida.
             </S.HeroDescription>
+            
             <S.HeroButton 
               href="https://wa.me/+5582996727126?text=Oi, gostaria de agendar uma consulta."
               target="_blank"
+              rel="noopener noreferrer"
             >
               <MessageCircle size={20} />
-              Agendar Atendimento
+              Agende sua primeira sessão
             </S.HeroButton>
+
+            {/* Selos de conversão e segurança logo abaixo do CTA */}
+            <S.HeroBadges>
+              <div className="badge">
+                <Video size={16} />
+                <span>Online & Presencial</span>
+              </div>
+              <div className="badge">
+                <ShieldCheck size={16} />
+                <span>Ambiente Confidencial</span>
+              </div>
+            </S.HeroBadges>
           </motion.div>
 
           <S.ImageContainer

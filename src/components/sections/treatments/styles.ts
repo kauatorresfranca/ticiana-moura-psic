@@ -3,10 +3,8 @@ import { breakpoints, colors } from '../../../../styles'
 
 export const TreatmentsSection = styled.section`
   padding: 100px 0;
-  background-color: #fcfcfc;
 
   .container {
-    max-width: 1024px;
     margin: 0 auto;
     padding: 0 16px;
   }
@@ -60,7 +58,7 @@ export const TreatmentsList = styled.div`
 export const TreatmentItem = styled.div`
   background-color: #fff;
   padding: 40px 24px;
-  border-radius: 20px;
+  border-radius: 18px;
   display: flex;
   flex-direction: column;
   align-items: center;

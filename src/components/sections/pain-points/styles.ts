@@ -3,10 +3,8 @@ import { breakpoints, colors } from '../../../../styles'
 
 export const PainPointsSection = styled.section`
   padding: 80px 0;
-  background-color: #fcfcfc;
   
   .container {
-    max-width: 1024px;
     margin: 0 auto;
     padding: 0 16px;
   }
