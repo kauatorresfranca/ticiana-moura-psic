@@ -1,10 +1,11 @@
+// Header/styles.js
 import styled, { keyframes } from 'styled-components'
 import { colors, breakpoints } from '../../../../styles'
 
-const slideIn = keyframes`
+const slideDown = keyframes`
   from { 
     opacity: 0; 
-    transform: translateY(-15px); 
+    transform: translateY(-20px); 
   }
   to { 
     opacity: 1; 
@@ -12,33 +13,41 @@ const slideIn = keyframes`
   }
 `
 
+const pulseGlow = keyframes`
+  0% { box-shadow: 0 0 0 0 rgba(184, 154, 122, 0.4); }
+  70% { box-shadow: 0 0 0 10px rgba(184, 154, 122, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(184, 154, 122, 0); }
+`
+
 export const HeaderWrapper = styled.div`
   width: 100%;
-  position: sticky;
+  position: absolute;
   top: 0;
+  left: 0;
   z-index: 1000;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 `
 
 export const HeaderContainer = styled.header`
-  background-color: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border-bottom: 1px solid rgba(184, 154, 122, 0.1);
+  background-color: transparent;
+  /* Borda removida para um visual mais limpo e sofisticado */
 
-  /* CORREÇÃO: O comportamento de grid flexível agora se limita à largura máxima do container */
   .content {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 16px;
-    padding-bottom: 16px;
+    padding-top: 24px;
+    padding-bottom: 24px;
   }
 `
 
 export const LogoContainer = styled.a`
   display: flex;
   align-items: center;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.02);
+  }
   
   img {
     width: 180px;
@@ -61,26 +70,32 @@ export const Nav = styled.nav<{ isOpen: boolean }>`
   @media (max-width: ${breakpoints.mobile}) {
     display: ${props => (props.isOpen ? 'flex' : 'none')};
     flex-direction: column;
-    position: absolute;
-    top: 100%;
+    position: fixed;
+    top: 0;
     left: 0;
-    width: 100%;
-    background: ${colors.white};
-    padding: 32px 24px;
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-    border-bottom: 2px solid ${colors.primaryTransparent};
-    animation: ${slideIn} 0.25s ease-out;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(248, 245, 240, 0.96);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    padding: 120px 32px 48px 32px;
+    animation: ${slideDown} 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 999;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 
     ul {
       flex-direction: column;
       align-items: center;
-      gap: 24px;
+      gap: 28px;
+      width: 100%;
     }
   }
 `
 
 export const HeaderMenuItem = styled.a`
-  color: ${colors.text};
+  color: ${colors.title};
   font-weight: 600;
   font-size: 15px;
   position: relative;
@@ -106,6 +121,20 @@ export const HeaderMenuItem = styled.a`
       width: 100%; 
     }
   }
+
+  @media (max-width: ${breakpoints.mobile}) {
+    font-size: 24px;
+    font-family: 'DM Serif Display', serif;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    color: ${colors.title};
+    transition: color 0.3s ease, transform 0.3s ease;
+
+    &:hover {
+      color: ${colors.primary};
+      transform: translateY(-2px);
+    }
+  }
 `
 
 export const Actions = styled.div`
@@ -118,7 +147,7 @@ export const HeaderLink = styled.a`
   padding: 12px 24px;
   background-color: ${colors.primaryTransparent};
   color: ${colors.title};
-  border-radius: 50px;
+  border-radius: 18px;
   text-decoration: none;
   font-size: 13px;
   font-weight: 700;
@@ -139,15 +168,25 @@ export const HeaderLink = styled.a`
 
 export const MobileMenu = styled.button`
   display: none;
-  background: none;
-  border: none;
+  background: ${colors.primaryTransparent};
+  border: 1px solid rgba(184, 154, 122, 0.2);
   cursor: pointer;
   color: ${colors.title};
-  padding: 4px;
-  transition: color 0.2s;
+  width: 48px;
+  height: 48px;
+  border-radius: 16px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+  animation: ${pulseGlow} 3s infinite;
 
   &:hover {
-    color: ${colors.primary};
+    background-color: ${colors.primary};
+    color: ${colors.white};
+    transform: scale(1.05);
+  }
+
+  &:active {
+    transform: scale(0.95);
   }
 
   @media (max-width: ${breakpoints.mobile}) {
