@@ -29,7 +29,6 @@ export const HeaderWrapper = styled.div`
 
 export const HeaderContainer = styled.header`
   background-color: transparent;
-  /* Borda removida para um visual mais limpo e sofisticado */
 
   .content {
     display: flex;
@@ -75,13 +74,13 @@ export const Nav = styled.nav<{ isOpen: boolean }>`
     left: 0;
     width: 100vw;
     height: 100vh;
-    background: rgba(248, 245, 240, 0.96);
+    background: rgba(248, 245, 240, 0.98);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 120px 32px 48px 32px;
+    padding: 100px 32px 48px 32px;
     animation: ${slideDown} 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     z-index: 999;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
     box-shadow: 0 30px 60px rgba(0, 0, 0, 0.08);
 
@@ -193,5 +192,13 @@ export const MobileMenu = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    position: relative;
+    
+    /* Transforma o botão em um "X" elegante quando o menu estiver aberto */
+    &.is-open {
+      background-color: ${colors.primary};
+      color: ${colors.white};
+      animation: none;
+    }
   }
 `

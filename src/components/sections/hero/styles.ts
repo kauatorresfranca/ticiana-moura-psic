@@ -56,6 +56,7 @@ export const HeroTitle = styled.h1`
 
   @media (max-width: ${breakpoints.tablet}) {
     font-size: 32px;
+    margin-top: 12px;
     margin-bottom: 12px;
   }
 `

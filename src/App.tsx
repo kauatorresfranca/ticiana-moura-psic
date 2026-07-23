@@ -6,7 +6,7 @@ import Hero from "./components/sections/hero"
 const PainPoints = lazy(() => import("./components/sections/pain-points"))
 const AboutMe = lazy(() => import("./components/sections/about-me"))
 const Treatments = lazy(() => import("./components/sections/treatments/index."))
-const Testimonials = lazy(() => import("./components/sections/testimonials"))
+//const Testimonials = lazy(() => import("./components/sections/testimonials"))
 const FAQ = lazy(() => import("./components/sections/faq"))
 const Footer = lazy(() => import("./components/sections/footer"))
 const WhatsAppButton = lazy(() => import("./components/wpp-button"))
@@ -22,10 +22,9 @@ function App() {
         {/* O Suspense gerencia o carregamento das outras seções em segundo plano */}
         <Suspense fallback={null}>
           <div className="container">
-            <PainPoints />
             <AboutMe /> 
+            <PainPoints />
             <Treatments />
-            <Testimonials />
             <FAQ />
             <Footer />
           </div>

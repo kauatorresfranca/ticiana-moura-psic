@@ -1,136 +1,147 @@
+// About/styles.js
 import styled from 'styled-components'
 import { breakpoints, colors } from '../../../../styles'
 
 export const AboutSection = styled.section`
-  padding: 100px 0;
+  padding: 120px 0;
+  background-color: transparent;
 
   .container {
+    max-width: 1200px;
     margin: 0 auto;
-    padding: 0 16px;
+    padding: 0 24px;
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    padding: 80px 0;
   }
 `
 
-export const Grid = styled.div`
+export const AboutGrid = styled.div`
   display: grid;
-  grid-template-columns: 0.8fr 1.2fr;
+  grid-template-columns: 1.1fr 1fr;
   gap: 60px;
-  align-items: flex-start;
+  align-items: center;
 
   @media (max-width: ${breakpoints.tablet}) {
     grid-template-columns: 1fr;
     gap: 40px;
+    text-align: center;
+
+    .text-column {
+      order: 1;
+    }
+
+    .image-column {
+      order: 2;
+    }
   }
 `
 
-export const ImageContainer = styled.div`
+export const ImageWrapper = styled.div`
   position: relative;
-  
+  display: flex;
+  justify-content: center;
+`
+
+export const ProfileImageContainer = styled.div`
+  width: 100%;
+  max-width: 420px;
+  height: 500px;
+  border-radius: 24px;
+  overflow: hidden;
+
   img {
     width: 100%;
-    border-radius: 24px;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    height: 100%;
     object-fit: cover;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 400px;
-    margin: 0 auto;
+    height: 400px;
   }
 `
 
-export const ExperienceBadge = styled.div`
-  position: absolute;
-  bottom: -20px;
-  right: -20px;
-  background-color: ${colors.primary};
-  color: #fff;
-  padding: 20px;
-  border-radius: 16px;
+export const ContentWrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 8px;
-  box-shadow: 0 10px 20px ${colors.primary}40;
 
-  span {
-    font-size: 14px;
-    font-weight: 700;
-    text-align: center;
-    line-height: 1.2;
-  }
-
-  @media (max-width: ${breakpoints.mobile}) {
-    right: 0;
-    bottom: 0;
-    padding: 15px;
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: center;
   }
 `
 
-export const Content = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const HeaderInfo = styled.div`
-  margin-bottom: 24px;
+export const Subtitle = styled.span`
+  font-family: 'DM Serif Display', serif;
+  font-size: 16px;
+  color: ${colors.primary};
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  display: block;
+  margin-bottom: 12px;
 `
 
 export const Title = styled.h2`
-  font-size: 40px;
+  font-family: 'DM Serif Display', serif;
+  font-size: 38px;
   color: ${colors.title};
-  font-weight: 800;
-  margin-bottom: 8px;
-`
+  font-weight: 400;
+  margin-bottom: 20px;
+  line-height: 1.2;
 
-export const Subtitle = styled.h3`
-  font-size: 18px;
-  color: ${colors.primary};
-  font-weight: 600;
-  letter-spacing: 1px;
+  @media (max-width: ${breakpoints.tablet}) {
+    font-size: 30px;
+  }
 `
 
 export const Description = styled.p`
-  font-size: 18px;
+  font-size: 16px;
   color: ${colors.text};
   line-height: 1.7;
-  margin-bottom: 32px;
+  margin-bottom: 24px;
 
-  strong {
-    color: ${colors.title};
-    font-weight: 700;
-  }
-`
-
-export const TrainingArea = styled.div`
-  background-color: ${colors.primaryTransparent};
-  padding: 32px;
-  border-radius: 20px;
-  border-left: 5px solid ${colors.primary};
-`
-
-export const TrainingTitle = styled.h4`
-  font-size: 20px;
-  color: ${colors.title};
-  font-weight: 700;
-  margin-bottom: 20px;
-`
-
-export const TrainingList = styled.ul`
-  list-style: none;
-  display: grid;
-  gap: 12px;
-
-  li {
-    display: flex;
-    align-items: center;
-    gap: 12px;
+  @media (max-width: ${breakpoints.tablet}) {
     font-size: 15px;
-    color: ${colors.text};
-    font-weight: 500;
-    line-height: 1.4;
-
-    svg {
-      flex-shrink: 0;
-    }
+    text-align: center;
   }
+`
+
+export const BenefitsList = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 10px;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: flex-start;
+    width: 100%;
+    max-width: 380px;
+    margin: 10px auto 0 auto;
+  }
+`
+
+export const BenefitItem = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  text-align: left;
+
+  span {
+    font-size: 15px;
+    color: ${colors.title};
+    font-weight: 500;
+  }
+`
+
+export const IconBox = styled.div`
+  width: 38px;
+  height: 38px;
+  background-color: ${colors.primaryTransparent};
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border: 1px solid rgba(184, 154, 122, 0.2);
 `

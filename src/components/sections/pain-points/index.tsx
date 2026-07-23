@@ -1,67 +1,79 @@
+// Services.jsx
 import { motion } from 'framer-motion'
 import * as S from './styles'
-import ansiedade from '../../../assets/images/ansiedade.png'
-import preocupacao from '../../../assets/images/preocucacao.png'
-import estresse from '../../../assets/images/estresse.png'
-import autoestima from '../../../assets/images/autoestima.png'
+import { HeartPulse, Brain, Users, Sparkles } from 'lucide-react'
+import { colors } from '../../../../styles'
 
-export const PainPoints = () => {
+const Services = () => {
+  const serviceItems = [
+    {
+      icon: <Brain size={28} color={colors.primary} />,
+      title: "Ansiedade e Estresse",
+      description: "Alívio para crises constantes, excesso de preocupações, medos paralisantes e a sensação de esgotamento mental."
+    },
+    {
+      icon: <HeartPulse size={28} color={colors.primary} />,
+      title: "Autoestima e Autoconhecimento",
+      description: "Desenvolvimento pessoal para superar inseguranças, cobranças excessivas e redescobrir o seu valor e autonomia."
+    },
+    {
+      icon: <Users size={28} color={colors.primary} />,
+      title: "Dificuldades nos Relacionamentos",
+      description: "Suporte para conflitos familiares, afetivos ou sociais, melhorando a comunicação e a forma de se conectar com o outro."
+    },
+    {
+      icon: <Sparkles size={28} color={colors.primary} />,
+      title: "Fases de Transição e Luto",
+      description: "Acolhimento profissional para momentos de mudanças drásticas, perdas, instabilidades ou crises existenciais."
+    }
+  ]
+
   return (
-    <S.PainPointsSection id="especialidades">
+    <S.ServicesSection id="servicos">
       <div className="container">
-        <S.ContentWrapper
-          as={motion.div}
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
         >
-          <S.Title>
-            Sua mente parece um turbilhão constante, com pensamentos que <span>não param de girar</span>?
-          </S.Title>
-          <S.Subtitle>
-            Se você se sente sobrecarregada por preocupações intermináveis, saiba que não está sozinha. Esses sinais indicam um esgotamento que afeta sua qualidade de vida:
-          </S.Subtitle>
+          <S.SectionHeader>
+            <S.Subtitle>Para Quem É</S.Subtitle>
+            <S.Title>Você não precisa enfrentar tudo sozinho(a)</S.Title>
+            <S.Description>
+              A psicoterapia é um espaço seguro para compreender o que está acontecendo e retomar o controle da sua vida emocional. Veja como podemos caminhar juntos:
+            </S.Description>
+          </S.SectionHeader>
+        </motion.div>
 
-          <S.SymptomsList>
-            <S.SymptomItem>
-              <div className="icon-wrapper">
-                <img src={ansiedade} alt="Ansiedade" />
-              </div>
-              <S.SymptomText>Ansiedade constante que rouba o seu sono</S.SymptomText>
-            </S.SymptomItem>
-            <S.SymptomItem>
-              <div className="icon-wrapper">
-                <img src={preocupacao} alt="Preocupação" />
-              </div>
-              <S.SymptomText>Preocupações excessivas com o futuro</S.SymptomText>
-            </S.SymptomItem>
-            <S.SymptomItem>
-              <div className="icon-wrapper">
-                <img src={estresse} alt="Estresse" />
-              </div>
-              <S.SymptomText>Estresse que explode em momentos inesperados</S.SymptomText>
-            </S.SymptomItem>
-            <S.SymptomItem>
-              <div className="icon-wrapper">
-                <img src={autoestima} alt="Autoestima" />
-              </div>
-              <S.SymptomText>Dúvida constante sobre seu próprio valor</S.SymptomText>
-            </S.SymptomItem>
-          </S.SymptomsList>
+        <S.CardsGrid>
+          {serviceItems.map((item, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+            >
+              <S.Card>
+                <S.IconWrapper>{item.icon}</S.IconWrapper>
+                <S.CardTitle>{item.title}</S.CardTitle>
+                <S.CardDescription>{item.description}</S.CardDescription>
+              </S.Card>
+            </motion.div>
+          ))}
+        </S.CardsGrid>
 
-          <S.CTAWrapper>
-            <p>
-              Esses desafios <span>não precisam</span> definir sua vida. <br />
-              Com apoio profissional, você pode reencontrar sua serenidade.
-            </p>
-            <S.Button href='https://wa.me/+5582996727126?text=Oi, quero agendar uma consulta.'>
-              QUERO RECUPERAR MEU EQUILÍBRIO
-            </S.Button>
-          </S.CTAWrapper>
-        </S.ContentWrapper>
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.4 }}
+        >
+        </motion.div>
       </div>
-    </S.PainPointsSection>
+    </S.ServicesSection>
   )
 }
 
-export default PainPoints
+export default Services
