@@ -1,4 +1,3 @@
-// HowItWorks.jsx
 import { motion } from 'framer-motion'
 import * as S from './styles'
 import { Calendar, Video, HeartHandshake, ArrowRight } from 'lucide-react'
@@ -9,20 +8,20 @@ const HowItWorks = () => {
     {
       step: "01",
       icon: <Calendar size={28} color={colors.primary} />,
-      title: "Contato Inicial",
-      description: "Você clica no botão de agendamento e conversa diretamente pelo WhatsApp para tirar dúvidas e escolher o melhor horário."
+      title: "Contato Inicial via WhatsApp",
+      description: "Você clica no botão de agendamento e fala diretamente comigo para esclarecer dúvidas e definir o melhor dia e horário para sua consulta."
     },
     {
       step: "02",
       icon: <Video size={28} color={colors.primary} />,
-      title: "A Sessão",
-      description: "O atendimento acontece de forma online ou presencial, em um ambiente totalmente seguro, sigiloso e acolhedor para você."
+      title: "A Consulta (Presencial em Maceió ou Online)",
+      description: "O atendimento ocorre de forma presencial em consultório acolhedor em Maceió/AL ou por videochamada online, com total sigilo e privacidade."
     },
     {
       step: "03",
       icon: <HeartHandshake size={28} color={colors.primary} />,
-      title: "Transformação e Cuidado",
-      description: "Sessão após sessão, trabalhamos juntos no seu autoconhecimento para resgatar sua estabilidade e qualidade de vida."
+      title: "Acompanhamento e Processo Terapêutico",
+      description: "Construímos uma relação terapêutica sólida, trabalhando suas demandas para promover autoconhecimento, alívio emocional e qualidade de vida."
     }
   ]
 
@@ -37,9 +36,9 @@ const HowItWorks = () => {
         >
           <S.SectionHeader>
             <S.Subtitle>Como Funciona</S.Subtitle>
-            <S.Title>Simples, seguro e humanizado</S.Title>
+            <S.Title as="h2">Como Funciona o Atendimento Psicológico</S.Title>
             <S.Description>
-              Dar o primeiro passo pode parecer difícil, mas o processo de iniciar a terapia foi desenhado para ser acolhedor desde o primeiro contato.
+              Iniciar a psicoterapia é um passo simples e seguro. Veja como funciona o processo desde o primeiro contato até o acompanhamento contínuo:
             </S.Description>
           </S.SectionHeader>
         </motion.div>
@@ -56,7 +55,7 @@ const HowItWorks = () => {
               <S.StepCard>
                 <S.StepNumber>{item.step}</S.StepNumber>
                 <S.IconWrapper>{item.icon}</S.IconWrapper>
-                <S.StepTitle>{item.title}</S.StepTitle>
+                <S.StepTitle as="h3">{item.title}</S.StepTitle>
                 <S.StepDescription>{item.description}</S.StepDescription>
               </S.StepCard>
             </motion.div>
@@ -71,11 +70,12 @@ const HowItWorks = () => {
         >
           <S.ActionContainer>
             <S.CtaButton 
-              href="https://wa.me/+5582996727126?text=Oi, gostaria de agendar uma consulta."
+              href="https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia."
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Agende sua consulta de psicoterapia via WhatsApp com Ticiana Moura"
             >
-              Começar meu atendimento agora
+              Agende sua consulta com Ticiana Moura
               <ArrowRight size={18} />
             </S.CtaButton>
           </S.ActionContainer>

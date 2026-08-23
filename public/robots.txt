@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+# Substitua com o seu domínio real
+Sitemap: https://www.ticianamourapsicologa.com.br/sitemap.xml

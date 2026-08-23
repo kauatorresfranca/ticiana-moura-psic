@@ -1,4 +1,3 @@
-// FAQ.jsx
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import * as S from './styles'
@@ -10,24 +9,28 @@ const FAQ = () => {
 
   const faqs = [
     {
+      question: "Onde é realizado o atendimento psicológico presencial?",
+      answer: "O atendimento presencial com a Psicóloga Ticiana Moura é realizado em consultório estruturado na cidade de Maceió, Alagoas, oferecendo um ambiente acolhedor, privativo e de fácil acesso."
+    },
+    {
       question: "Como funciona a terapia online?",
-      answer: "A terapia online acontece por vídeo chamada (via WhatsApp ou plataforma de sua preferência) com a mesma eficácia, segurança e sigilo do atendimento presencial. Você pode realizar de onde estiver, com total privacidade e conforto."
+      answer: "A psicoterapia online é realizada via videochamada em plataforma segura e privativa. Ela oferece a mesma eficácia, ética e sigilo do atendimento presencial em Maceió, permitindo que você faça as sessões no conforto da sua casa ou de qualquer lugar."
     },
     {
-      question: "Qual é a duração e a frequência das sessões?",
-      answer: "Cada sessão tem duração média de 50 minutos. Inicialmente, recomendo encontros semanais para que possamos construir um vínculo terapêutico sólido e avançar de forma consistente no seu processo."
+      question: "Qual é a duração e a frequência das consultas?",
+      answer: "Cada sessão possui duração média de 50 minutos. Geralmente, as sessões ocorrem semanalmente para garantir a continuidade do processo terapêutico e o alinhamento com os objetivos do paciente."
     },
     {
-      question: "Como faço para agendar a primeira consulta?",
-      answer: "O agendamento é simples e direto. Basta clicar em qualquer um dos botões de contato para falar diretamente pelo WhatsApp. Lá, conversaremos sobre horários disponíveis e tiraremos qualquer dúvida inicial."
+      question: "Como faço para agendar uma consulta com Ticiana Moura?",
+      answer: "O agendamento é simples e rápido. Basta clicar no botão de WhatsApp do site para falar diretamente sobre horários disponíveis para atendimento presencial em Maceió ou online."
     },
     {
-      question: "A terapia é indicada para quais casos?",
-      answer: "O atendimento é focado em adolescentes e adultos que buscam auxílio para lidar com ansiedade, estresse, crises emocionais, autoestima, conflitos de relacionamento ou momentos de transição e luto."
+      question: "A psicoterapia é indicada para quais situações?",
+      answer: "A psicoterapia é indicada para adultos e adolescentes que buscam auxílio no tratamento da ansiedade, estresse, depressão, autoconhecimento, transições de vida e melhoria dos relacionamentos interpessoais."
     },
     {
-      question: "O conteúdo das sessões é totalmente sigiloso?",
-      answer: "Sim, absolutamente. O sigilo profissional é um dever ético fundamental da psicologia, garantindo que tudo o que for conversado em sessão permaneça estritamente entre nós."
+      question: "O conteúdo conversado nas sessões é totalmente sigiloso?",
+      answer: "Sim. O sigilo profissional é rigorosamente mantido de acordo com o Código de Ética Profissional do Psicólogo, garantindo privacidade e confidencialidade em todos os atendimentos."
     }
   ]
 
@@ -35,8 +38,28 @@ const FAQ = () => {
     setActiveIndex(activeIndex === index ? null : index)
   }
 
+  // FAQ Schema JSON-LD
+  const faqSchema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": faqs.map((faq) => ({
+      "@type": "Question",
+      "name": faq.question,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": faq.answer
+      }
+    }))
+  }
+
   return (
-    <S.FaqSection id="faq">
+    <S.FaqSection id="duvidas">
+      {/* Injeção de Schema FAQPage para rich snippets do Google */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -46,9 +69,9 @@ const FAQ = () => {
         >
           <S.SectionHeader>
             <S.Subtitle>Dúvidas Frequentes</S.Subtitle>
-            <S.Title>Tudo o que você precisa saber</S.Title>
+            <S.Title as="h2">Dúvidas Frequentes sobre o Atendimento Psicológico</S.Title>
             <S.Description>
-              Reunimos as principais dúvidas para que você se sinta totalmente seguro(a) antes de dar o primeiro passo rumo ao seu bem-estar.
+              Reunimos as principais informações sobre as consultas presenciais em Maceió e online para você iniciar seu acompanhamento com tranquilidade.
             </S.Description>
           </S.SectionHeader>
         </motion.div>
@@ -63,7 +86,12 @@ const FAQ = () => {
               transition={{ duration: 0.4, delay: index * 0.1 }}
             >
               <S.AccordionItem $isOpen={activeIndex === index}>
-                <S.AccordionHeader onClick={() => toggleAccordion(index)}>
+                <S.AccordionHeader 
+                  onClick={() => toggleAccordion(index)}
+                  aria-expanded={activeIndex === index}
+                  aria-controls={`faq-answer-${index}`}
+                  id={`faq-header-${index}`}
+                >
                   <S.QuestionText>{faq.question}</S.QuestionText>
                   <S.IconWrapper $isOpen={activeIndex === index}>
                     <ChevronDown size={20} color={colors.primary} />
@@ -72,6 +100,9 @@ const FAQ = () => {
                 <AnimatePresence>
                   {activeIndex === index && (
                     <S.AccordionBody
+                      id={`faq-answer-${index}`}
+                      role="region"
+                      aria-labelledby={`faq-header-${index}`}
                       initial={{ opacity: 0, height: 0 }}
                       animate={{ opacity: 1, height: 'auto' }}
                       exit={{ opacity: 0, height: 0 }}
@@ -85,14 +116,6 @@ const FAQ = () => {
             </motion.div>
           ))}
         </S.AccordionContainer>
-
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.5 }}
-        >
-        </motion.div>
       </div>
     </S.FaqSection>
   )

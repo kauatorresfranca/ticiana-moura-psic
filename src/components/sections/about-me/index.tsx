@@ -1,4 +1,3 @@
-// About.jsx
 import * as S from './styles'
 import { motion } from 'framer-motion'
 import { Sparkles, ShieldCheck, HeartHandshake } from 'lucide-react'
@@ -9,20 +8,20 @@ const About = () => {
   const benefits = [
     {
       icon: <Sparkles size={20} color={colors.primary} />,
-      title: "Escuta empática e sem julgamentos"
+      title: "Escuta empática, acolhedora e sem julgamentos"
     },
     {
       icon: <ShieldCheck size={20} color={colors.primary} />,
-      title: "Sigilo profissional absoluto"
+      title: "Sigilo profissional e respeito ao seu tempo"
     },
     {
       icon: <HeartHandshake size={20} color={colors.primary} />,
-      title: "Estratégias práticas para o dia a dia"
+      title: "Processo terapêutico focado na sua autonomia"
     }
   ]
 
   return (
-    <S.AboutSection id="sobre">
+    <S.AboutSection id="sobre-mim">
       <div className="container">
         <S.AboutGrid>
           <motion.div
@@ -34,9 +33,12 @@ const About = () => {
           >
             <S.ContentWrapper>
               <S.Subtitle>Sobre Mim</S.Subtitle>
-              <S.Title>Por que iniciar sua jornada terapêutica comigo?</S.Title>
+              <S.Title as="h2">Conheça a Psicóloga Ticiana Moura</S.Title>
               <S.Description>
-                Olá! Sou a Dra. Ticiana Moura Torres. Meu compromisso é oferecer um suporte acolhedor e humanizado, ajudando você a contornar a ansiedade, a sobrecarga emocional e a retomar o controle da sua vida com clareza.
+                Sou <strong>Ticiana Moura</strong> (CRP 15/1563), psicóloga clínica com mais de 20 anos de experiência na área da saúde mental. Meu compromisso é oferecer um espaço seguro, ético e verdadeiramente acolhedor para ajudar você a lidar com a ansiedade, sobrecarga emocional, autoconhecimento e desafios das relações interpessoais.
+              </S.Description>
+              <S.Description>
+                Com atendimento presencial em <strong>Maceió, Alagoas</strong>, e consultas na modalidade <strong>Online</strong>, acompanho adultos e adolescentes na busca por maior clareza, equilíbrio emocional e qualidade de vida.
               </S.Description>
 
               <S.BenefitsList>
@@ -59,7 +61,11 @@ const About = () => {
           >
             <S.ImageWrapper>
               <S.ProfileImageContainer>
-                <img src={aboutImage} alt="Dra. Ticiana Moura Torres" />
+                <img 
+                  src={aboutImage} 
+                  alt="Psicóloga Ticiana Moura - CRP 15/1563 - Atendimento em Maceió e Online" 
+                  title="Ticiana Moura | Psicóloga Clínica"
+                />
               </S.ProfileImageContainer>
             </S.ImageWrapper>
           </motion.div>

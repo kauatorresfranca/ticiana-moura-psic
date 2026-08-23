@@ -1,4 +1,3 @@
-// Header.jsx
 import { useState } from 'react'
 import * as S from './styles'
 import logo from '../../../assets/images/logo.png'
@@ -8,10 +7,10 @@ const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
 
   const menuItems = [
-    'Início',
-    'Sobre Mim',
-    'Especialidades',
-    'Dúvidas',
+    { label: 'Início', href: '#inicio' },
+    { label: 'Sobre Mim', href: '#sobre-mim' },
+    { label: 'Especialidades', href: '#especialidades' },
+    { label: 'Dúvidas', href: '#duvidas' },
   ]
 
   const handleLinkClick = () => {
@@ -22,19 +21,23 @@ const Header = () => {
     <S.HeaderWrapper>
       <S.HeaderContainer>
         <div className="container content">
-          <S.LogoContainer href="/">
-            <img src={logo} alt="Logo Psicóloga" />
+          <S.LogoContainer href="/" aria-label="Ticiana Moura Psicóloga - Página Inicial">
+            <img 
+              src={logo} 
+              alt="Ticiana Moura - Psicóloga em Maceió" 
+              title="Ticiana Moura | Psicóloga"
+            />
           </S.LogoContainer>
 
-          <S.Nav isOpen={isMenuOpen}>
+          <S.Nav isOpen={isMenuOpen} aria-label="Navegação Principal">
             <ul>
               {menuItems.map((item) => (
-                <li key={item}>
+                <li key={item.label}>
                   <S.HeaderMenuItem 
-                    href={`#${item.toLowerCase().replace(' ', '-')}`}
+                    href={item.href}
                     onClick={handleLinkClick}
                   >
-                    {item}
+                    {item.label}
                   </S.HeaderMenuItem>
                 </li>
               ))}
@@ -43,14 +46,19 @@ const Header = () => {
 
           <S.Actions>
             <S.HeaderLink 
-              href='https://wa.me/+5582996727126?text=Olá, gostaria de agendar uma consulta.'
+              href="https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20gostaria%20de%20agendar%20uma%20consulta%20com%20a%20Psic%C3%B3loga%20Ticiana%20Moura."
               target="_blank"
               rel="noopener noreferrer"
+              aria-label="Agende sua consulta pelo WhatsApp com a Psicóloga Ticiana Moura"
             >
               AGENDE SUA CONSULTA
             </S.HeaderLink>
             
-            <S.MobileMenu onClick={() => setIsMenuOpen(!isMenuOpen)} aria-label="Menu">
+            <S.MobileMenu 
+              onClick={() => setIsMenuOpen(!isMenuOpen)} 
+              aria-label={isMenuOpen ? "Fechar menu de navegação" : "Abrir menu de navegação"}
+              aria-expanded={isMenuOpen}
+            >
               {isMenuOpen ? <X size={26} /> : <Menu size={26} />}
             </S.MobileMenu>
           </S.Actions>
