@@ -15,7 +15,8 @@ export const Hero = () => {
             viewport={{ once: true }}
           >
             <S.HeroTitle as="h1">
-              Ticiana Moura <span>Psicologia Clínica & Psicoterapia</span>
+              Compreenda suas emoções
+              <span>e cuide de si com mais leveza.</span>
             </S.HeroTitle>
             
             <S.HeroDescription>
