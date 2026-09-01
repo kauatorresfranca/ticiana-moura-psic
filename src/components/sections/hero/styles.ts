@@ -16,7 +16,7 @@ export const HeroSection = styled.section`
   position: relative;
 
   @media (max-width: ${breakpoints.tablet}) {
-    min-height: 90vh;
+    min-height: 100vh;
     padding: 110px 0 0 0;
     background-image: url(${BackgroundMobile});
     display: flex;

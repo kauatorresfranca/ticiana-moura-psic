@@ -1,7 +1,7 @@
 import { motion } from 'framer-motion'
 import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
-import { MessageCircle, ShieldCheck, Video, MapPin } from 'lucide-react'
+import { MessageCircle, Video, MapPin } from 'lucide-react'
 
 export const Hero = () => {
   return (
@@ -41,10 +41,6 @@ export const Hero = () => {
               <div className="badge">
                 <Video size={16} />
                 <span>Atendimento Online</span>
-              </div>
-              <div className="badge">
-                <ShieldCheck size={16} />
-                <span>Sigilo e Acolhimento</span>
               </div>
             </S.HeroBadges>
           </motion.div>
