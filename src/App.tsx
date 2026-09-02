@@ -16,8 +16,7 @@ function App() {
     <>
       <Header />
       <main>
-        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido */}
-        <Hero />
+        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido <Hero />*/}
         
         {/* O Suspense gerencia o carregamento das outras seções em segundo plano */}
         <Suspense fallback={null}>
