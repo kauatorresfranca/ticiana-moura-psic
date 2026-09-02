@@ -1,5 +1,4 @@
 import { Suspense, lazy } from 'react'
-import Header from "./components/sections/header"
 import Hero from "./components/sections/hero"
 
 // Carregamento Tardio (Lazy Loading) para seções "abaixo da dobra"
@@ -14,9 +13,9 @@ const WhatsAppButton = lazy(() => import("./components/wpp-button"))
 function App() {
   return (
     <>
-      <Header />
       <main>
-        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido <Hero />*/}
+        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido */}
+        <Hero />
         
         {/* O Suspense gerencia o carregamento das outras seções em segundo plano */}
         <Suspense fallback={null}>
