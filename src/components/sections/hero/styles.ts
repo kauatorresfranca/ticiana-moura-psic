@@ -1,169 +1,216 @@
-// Hero/styles.js
 import styled from 'styled-components'
-import { colors, breakpoints } from '../../../../styles'
-import BackgroundImage from '../../../assets/images/background2.png'
-import BackgroundMobile from '../../../assets/images/background1-mobile.png'
+import { motion } from 'framer-motion'
+import { breakpoints } from '../../../../styles'
+
+const palette = {
+  sand: '#dbc3ad',
+  sandLight: '#EDE1D6',
+  sandDark: '#C4AD98',
+  brown: '#422e22',
+  brownSoft: '#6b4a36',
+}
 
 export const HeroSection = styled.section`
-  min-height: 88vh;
-  display: flex;
-  align-items: center;
-  padding: 140px 0 60px 0;
-  overflow: hidden;
-  background-image: url(${BackgroundImage});
-  background-size: cover;
-  background-position: center;
   position: relative;
+  display: grid;
+  align-items: center;
+  min-height: 100vh;
+  min-height: 100svh;
+  padding: clamp(112px, 16vh, 160px) 0 clamp(48px, 8vh, 96px);
+  overflow: hidden;
+  color: ${palette.brown};
+  background:
+    radial-gradient(60% 55% at 78% 42%, ${palette.sandLight} 0%, transparent 70%),
+    linear-gradient(180deg, ${palette.sand} 0%, #d3b9a2 100%);
 
   @media (max-width: ${breakpoints.tablet}) {
-    min-height: 100vh;
-    padding: 110px 0 0 0;
-    background-image: url(${BackgroundMobile});
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
+    min-height: auto;
+    padding: 96px 0 56px;
+    background:
+      radial-gradient(80% 40% at 50% 85%, ${palette.sandLight} 0%, transparent 70%),
+      linear-gradient(180deg, ${palette.sand} 0%, #d3b9a2 100%);
   }
 `
 
 export const HeroContent = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
   align-items: center;
-  gap: 40px;
+  gap: clamp(32px, 5vw, 80px);
   width: 100%;
 
   @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
     text-align: center;
-    display: flex;
-    flex-direction: column;
   }
 `
 
-export const HeroTitle = styled.h1`
+export const HeroText = styled(motion.div)`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    align-items: center;
+  }
+`
+
+export const Eyebrow = styled(motion.span)`
+  display: inline-block;
+  margin-bottom: 16px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: ${palette.brownSoft};
+`
+
+export const HeroTitle = styled(motion.h1)`
+  margin: 0 0 20px;
   font-family: 'DM Serif Display', serif;
-  font-size: 52px;
-  line-height: 1.15;
-  color: ${colors.title};
   font-weight: 400;
-  margin-bottom: 24px;
+  line-height: 1.12;
+  font-size: clamp(2rem, 1.2rem + 3.6vw, 3.75rem);
+  color: ${palette.brown};
+  text-wrap: balance;
 
   span {
-    font-family: 'DM Serif Display', serif;
-    color: ${colors.primary};
     display: block;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    font-size: 32px;
-    margin-top: 12px;
-    margin-bottom: 12px;
+    font-style: italic;
+    color: ${palette.brownSoft};
   }
 `
 
-export const HeroDescription = styled.p`
-  font-size: 18px;
-  line-height: 1.6;
-  color: ${colors.text};
-  margin-bottom: 24px;
+export const HeroDescription = styled(motion.p)`
+  margin: 0 0 32px;
   max-width: 480px;
+  font-size: clamp(0.95rem, 0.9rem + 0.3vw, 1.125rem);
+  line-height: 1.65;
+  color: rgba(66, 46, 34, 0.86);
 
   @media (max-width: ${breakpoints.tablet}) {
-    font-size: 14px;
-    margin: 0 auto 16px;
-    max-width: 100%;
-    line-height: 1.5;
+    margin-bottom: 24px;
+  }
+`
+
+export const HeroActions = styled(motion.div)`
+  width: 100%;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    display: flex;
+    justify-content: center;
   }
 `
 
 export const HeroButton = styled.a`
   display: inline-flex;
   align-items: center;
+  justify-content: center;
   gap: 12px;
-  background-color: ${colors.primary};
-  color: #fff;
-  padding: 14px 28px;
-  border-radius: 18px;
+  min-height: 52px;
+  padding: 0 32px;
+  border-radius: 999px;
+  background: ${palette.brown};
+  color: ${palette.sand};
+  font-size: 1rem;
   font-weight: 700;
-  font-size: 15px;
   text-decoration: none;
-  transition: all 0.3s ease;
-  box-shadow: 0 10px 20px ${colors.primary}40;
+  box-shadow: 0 12px 24px -8px rgba(66, 46, 34, 0.55);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 
   &:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 12px 25px ${colors.primary}60;
-    filter: brightness(1.1);
+    transform: translateY(-2px);
+    background: #58402f;
+    box-shadow: 0 16px 28px -8px rgba(66, 46, 34, 0.6);
+  }
+
+  &:active {
+    transform: scale(0.98);
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${palette.brown};
+    outline-offset: 3px;
   }
 
   @media (max-width: ${breakpoints.tablet}) {
     width: 100%;
-    justify-content: center;
-    padding: 12px 24px;
-    font-size: 14px;
+    max-width: 420px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `
 
-export const HeroBadges = styled.div`
+export const HeroBadges = styled(motion.ul)`
   display: flex;
-  gap: 16px;
-  margin-top: 20px;
   flex-wrap: wrap;
+  gap: 10px;
+  margin: 24px 0 0;
+  padding: 0;
+  list-style: none;
 
-  .badge {
-    display: flex;
+  li {
+    display: inline-flex;
     align-items: center;
-    gap: 6px;
-    color: ${colors.text};
-    font-size: 13px;
+    gap: 8px;
+    padding: 8px 14px;
+    border-radius: 999px;
+    border: 1px solid rgba(66, 46, 34, 0.18);
+    background: rgba(255, 255, 255, 0.35);
+    font-size: 0.85rem;
     font-weight: 500;
-    
-    svg {
-      color: ${colors.primary};
-    }
+    color: ${palette.brown};
   }
 
   @media (max-width: ${breakpoints.tablet}) {
     justify-content: center;
-    gap: 12px;
-    margin-top: 14px;
-    margin-bottom: 0px;
+    margin-top: 20px;
   }
 `
 
-export const ImageContainer = styled.div`
-  position: absolute;
-  bottom: 0;
-  right: 6%;
-  width: 42%;
-  max-width: 500px;
-  display: flex;
-  justify-content: center;
-  z-index: 2;
+export const Visual = styled(motion.div)`
+  position: relative;
+  justify-self: center;
+  width: 100%;
+  max-width: 460px;
+  aspect-ratio: 4 / 5;
+
+  /* contorno deslocado, dá profundidade ao arco */
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border: 1.5px solid rgba(66, 46, 34, 0.28);
+    border-radius: 999px 999px 32px 32px;
+    transform: translate(14px, 14px);
+  }
+
+  @media (max-width: ${breakpoints.tablet}) {
+    max-width: min(320px, 82vw);
+
+    &::before {
+      transform: translate(10px, 10px);
+    }
+  }
+`
+
+export const ImageFrame = styled.div`
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 999px 999px 32px 32px;
+  background: ${palette.sandDark};
+  box-shadow: 0 30px 60px -24px rgba(66, 46, 34, 0.5);
 
   img {
-    width: 100%;
-    height: auto;
-    max-height: 82vh;
-    object-fit: contain;
-    object-position: bottom;
     display: block;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    position: absolute;
-    bottom: 0;
-    left: 0;
     width: 100%;
-    max-width: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-
-    img {
-      max-height: 38vh;
-      object-fit: contain;
-      object-position: bottom;
-    }
+    height: 100%;
+    object-fit: cover;
+    object-position: center top;
   }
 `

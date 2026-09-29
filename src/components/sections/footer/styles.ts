@@ -1,65 +1,77 @@
-// Footer/styles.js
 import styled from 'styled-components'
-import { breakpoints, colors } from '../../../../styles'
+import { breakpoints, palette } from '../../../../styles'
 
 export const FooterSection = styled.footer`
-  border-top: 1px solid rgba(184, 154, 122, 0.2);
-  padding: 80px 0 40px 0;
-
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 24px;
-  }
-
-  @media (max-width: ${breakpoints.tablet}) {
-    padding: 60px 0 30px 0;
-  }
+  position: relative;
+  padding: clamp(56px, 8vw, 88px) 0 calc(28px + env(safe-area-inset-bottom, 0px));
+  overflow: hidden;
+  color: ${palette.sand};
+  background:
+    radial-gradient(50% 60% at 0% 0%, #4d3729 0%, transparent 70%),
+    ${palette.brown};
 `
 
 export const FooterContent = styled.div`
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
-  gap: 50px;
-  margin-bottom: 60px;
+  grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(32px, 5vw, 64px);
+  margin-bottom: clamp(40px, 5vw, 56px);
 
   @media (max-width: ${breakpoints.tablet}) {
-    grid-template-columns: 1fr;
-    gap: 40px;
-    margin-bottom: 40px;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  @media (max-width: 560px) {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 36px;
   }
 `
 
 export const BrandColumn = styled.div`
   display: flex;
   flex-direction: column;
+  align-items: flex-start;
+
+  @media (max-width: ${breakpoints.tablet}) {
+    grid-column: 1 / -1;
+  }
 `
 
-export const FooterLogo = styled.h3`
+export const FooterLogo = styled.p`
+  margin: 0 0 12px;
   font-family: 'DM Serif Display', serif;
-  font-size: 26px;
-  color: ${colors.title};
   font-weight: 400;
-  margin-bottom: 4px;
+  line-height: 1.2;
+  font-size: clamp(1.5rem, 1.3rem + 0.8vw, 1.9rem);
+  color: ${palette.sandLight};
 `
 
 export const FooterTagline = styled.span`
-  font-size: 14px;
-  color: ${colors.primary};
+  display: inline-block;
+  margin-bottom: 18px;
+  padding: 6px 14px;
+  border-radius: 999px;
+  border: 1px solid rgba(219, 195, 173, 0.4);
+  font-size: 0.75rem;
   font-weight: 600;
-  margin-bottom: 16px;
-  letter-spacing: 1px;
+  letter-spacing: 0.12em;
   text-transform: uppercase;
+  color: ${palette.sand};
 `
 
 export const FooterDescription = styled.p`
-  font-size: 15px;
-  color: ${colors.text};
-  line-height: 1.6;
-  max-width: 380px;
+  max-width: 400px;
+  font-size: 0.95rem;
+  line-height: 1.7;
+  color: rgba(219, 195, 173, 0.85);
+
+  strong {
+    font-weight: 600;
+    color: ${palette.sandLight};
+  }
 
   @media (max-width: ${breakpoints.tablet}) {
-    max-width: 100%;
+    max-width: 560px;
   }
 `
 
@@ -68,27 +80,46 @@ export const LinksColumn = styled.div`
   flex-direction: column;
 `
 
-export const ColumnTitle = styled.h4`
+export const ColumnTitle = styled.h2`
+  margin: 0 0 16px;
   font-family: 'DM Serif Display', serif;
-  font-size: 18px;
-  color: ${colors.title};
   font-weight: 400;
-  margin-bottom: 20px;
+  font-size: 1.15rem;
+  line-height: 1.3;
+  color: ${palette.sandLight};
 `
 
 export const FooterNav = styled.nav`
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 2px;
 
   a {
-    font-size: 15px;
-    color: ${colors.text};
+    display: inline-flex;
+    align-items: center;
+    width: fit-content;
+    min-height: 44px; /* área de toque confortável */
+    font-size: 0.95rem;
+    color: rgba(219, 195, 173, 0.85);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: color 0.25s ease;
 
     &:hover {
-      color: ${colors.primary};
+      color: ${palette.sandLight};
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid ${palette.sand};
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    a {
+      transition: none;
     }
   }
 `
@@ -107,73 +138,114 @@ export const SocialLinks = styled.div`
 export const SocialButton = styled.a`
   display: inline-flex;
   align-items: center;
-  gap: 10px;
-  font-size: 15px;
-  color: ${colors.text};
+  gap: 12px;
+  width: fit-content;
+  min-height: 48px;
+  padding: 0 20px;
+  border-radius: 999px;
+  border: 1px solid rgba(219, 195, 173, 0.35);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: ${palette.sand};
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: background 0.25s ease, color 0.25s ease, border-color 0.25s ease;
 
   &:hover {
-    color: ${colors.primary};
+    background: ${palette.sand};
+    border-color: ${palette.sand};
+    color: ${palette.brown};
+  }
+
+  &:focus-visible {
+    outline: 3px solid ${palette.sand};
+    outline-offset: 3px;
+  }
+
+  @media (max-width: 560px) {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
   }
 `
 
 export const FooterBottom = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
   align-items: center;
-  padding-top: 30px;
-  border-top: 1px solid rgba(184, 154, 122, 0.15);
-  position: relative;
+  justify-content: space-between;
+  gap: 16px 24px;
+  padding-top: 28px;
+  border-top: 1px solid rgba(219, 195, 173, 0.2);
 
   @media (max-width: ${breakpoints.tablet}) {
     flex-direction: column;
-    gap: 20px;
+    justify-content: center;
     text-align: center;
   }
 `
 
 export const Copyright = styled.p`
-  font-size: 14px;
-  color: ${colors.text};
+  font-size: 0.85rem;
+  line-height: 1.6;
+  color: rgba(219, 195, 173, 0.75);
 `
 
 export const Credit = styled.p`
-  font-size: 14px;
-  color: ${colors.text};
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
+  font-size: 0.85rem;
+  color: rgba(219, 195, 173, 0.75);
 
   a {
-    color: ${colors.primary};
+    color: ${palette.sand};
+    font-weight: 600;
     text-decoration: none;
-  }
 
-  @media (max-width: ${breakpoints.tablet}) {
-    justify-content: center;
+    &:hover {
+      color: ${palette.sandLight};
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    &:focus-visible {
+      outline: 2px solid ${palette.sand};
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
   }
 `
 
 export const ScrollTopButton = styled.button`
-  width: 40px;
-  height: 40px;
-  background-color: ${colors.primaryTransparent};
-  border: 1px solid rgba(184, 154, 122, 0.3);
-  border-radius: 50%;
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-shrink: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid rgba(219, 195, 173, 0.4);
+  background: transparent;
+  color: ${palette.sand};
   cursor: pointer;
-  transition: all 0.3s ease;
+  transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
 
   &:hover {
-    background-color: ${colors.primary};
-    border-color: ${colors.primary};
+    background: ${palette.sand};
+    color: ${palette.brown};
     transform: translateY(-3px);
+  }
 
-    svg {
-      color: #fff !important;
+  &:focus-visible {
+    outline: 3px solid ${palette.sand};
+    outline-offset: 3px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    transition: none;
+
+    &:hover {
+      transform: none;
     }
   }
 `

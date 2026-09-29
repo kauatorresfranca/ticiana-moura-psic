@@ -1,34 +1,36 @@
 import { Suspense, lazy } from 'react'
-import Hero from "./components/sections/hero"
+import Hero from './components/sections/hero'
 
-// Carregamento Tardio (Lazy Loading) para seções "abaixo da dobra"
-const PainPoints = lazy(() => import("./components/sections/pain-points"))
-const AboutMe = lazy(() => import("./components/sections/about-me"))
-const Treatments = lazy(() => import("./components/sections/treatments/index."))
-//const Testimonials = lazy(() => import("./components/sections/testimonials"))
-const FAQ = lazy(() => import("./components/sections/faq"))
-const Footer = lazy(() => import("./components/sections/footer"))
-const WhatsAppButton = lazy(() => import("./components/wpp-button"))
+// Seções "abaixo da dobra" carregadas sob demanda
+const AboutMe = lazy(() => import('./components/sections/about-me'))
+const PainPoints = lazy(() => import('./components/sections/pain-points'))
+const Treatments = lazy(() => import('./components/sections/treatments'))
+const FAQ = lazy(() => import('./components/sections/faq'))
+const Footer = lazy(() => import('./components/sections/footer'))
+const WhatsAppButton = lazy(() => import('./components/wpp-button'))
+
+// Reserva altura enquanto os chunks carregam, evitando "pulos" no layout
+const SectionFallback = () => <div style={{ minHeight: '100vh' }} aria-hidden="true" />
 
 function App() {
   return (
     <>
       <main>
-        {/* Hero é renderizado imediatamente para um LCP (Largest Contentful Paint) rápido */}
+        {/* Hero renderiza imediatamente para um LCP rápido */}
         <Hero />
-        
-        {/* O Suspense gerencia o carregamento das outras seções em segundo plano */}
-        <Suspense fallback={null}>
-          <div className="container">
-            <AboutMe /> 
-            <PainPoints />
-            <Treatments />
-            <FAQ />
-            <Footer />
-          </div>
-          <WhatsAppButton />
+
+        <Suspense fallback={<SectionFallback />}>
+          <AboutMe />
+          <PainPoints />
+          <Treatments />
+          <FAQ />
         </Suspense>
       </main>
+
+      <Suspense fallback={null}>
+        <Footer />
+        <WhatsAppButton />
+      </Suspense>
     </>
   )
 }

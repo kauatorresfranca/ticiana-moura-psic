@@ -1,65 +1,76 @@
-import { motion } from 'framer-motion'
-import * as S from './styles'
+import { useReducedMotion } from 'framer-motion'
 import { HeartPulse, Brain, Users, Sparkles } from 'lucide-react'
-import { colors } from '../../../../styles'
+import * as S from './styles'
+
+const serviceItems = [
+  {
+    icon: Brain,
+    title: 'Tratamento para Ansiedade e Estresse',
+    description:
+      'Suporte especializado e alívio para crises de ansiedade, preocupações excessivas, síndrome do pensamento acelerado, fobias e o esgotamento mental do dia a dia.',
+  },
+  {
+    icon: HeartPulse,
+    title: 'Autoestima e Autoconhecimento',
+    description:
+      'Acompanhamento focado no fortalecimento da autoimagem, superação de cobranças excessivas, desenvolvimento pessoal e reconexão com o seu valor e autonomia.',
+  },
+  {
+    icon: Users,
+    title: 'Relacionamentos e Conflitos Afetivos',
+    description:
+      'Psicoterapia voltada para a melhoria da comunicação, estabelecimento de limites saudáveis e superação de conflitos familiares, conjugais ou interpessoais.',
+  },
+  {
+    icon: Sparkles,
+    title: 'Transições de Vida, Luto e Crises',
+    description:
+      'Acolhimento ético e humano para enfrentar perdas, mudanças profundas de carreira ou ciclo de vida, separações e momentos de vulnerabilidade emocional.',
+  },
+]
 
 const Services = () => {
-  const serviceItems = [
-    {
-      icon: <Brain size={28} color={colors.primary} />,
-      title: "Tratamento para Ansiedade e Estresse",
-      description: "Suporte especializado e alívio para crises de ansiedade, preocupações excessivas, síndrome do pensamento acelerado, fobias e o esgotamento mental do dia a dia."
-    },
-    {
-      icon: <HeartPulse size={28} color={colors.primary} />,
-      title: "Autoestima e Autoconhecimento",
-      description: "Acompanhamento focado no fortalecimento da autoimagem, superação de cobranças excessivas, desenvolvimento pessoal e reconexão com o seu valor e autonomia."
-    },
-    {
-      icon: <Users size={28} color={colors.primary} />,
-      title: "Relacionamentos e Conflitos Afetivos",
-      description: "Psicoterapia voltada para a melhoria da comunicação, estabelecimento de limites saudáveis e superação de conflitos familiares, conjugais ou interpessoais."
-    },
-    {
-      icon: <Sparkles size={28} color={colors.primary} />,
-      title: "Transições de Vida, Luto e Crises",
-      description: "Acolhimento ético e humano para enfrentar perdas, mudanças profundas de carreira ou ciclo de vida, separações e momentos de vulnerabilidade emocional."
-    }
-  ]
+  const reduceMotion = useReducedMotion()
+  const offset = reduceMotion ? 0 : 24
 
   return (
-    <S.ServicesSection id="especialidades">
+    <S.ServicesSection id="especialidades" aria-labelledby="services-title">
       <div className="container">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
+        <S.SectionHeader
+          initial={{ opacity: 0, y: offset }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: '-80px' }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
-          <S.SectionHeader>
-            <S.Subtitle>Especialidades & Atendimento</S.Subtitle>
-            <S.Title as="h2">Como a Psicoterapia Pode Ajudar Você</S.Title>
-            <S.Description>
-              A psicóloga Ticiana Moura oferece atendimento individual focado nas suas necessidades emocionais, com consultas presenciais em Maceió e sessões de terapia online.
-            </S.Description>
-          </S.SectionHeader>
-        </motion.div>
+          <S.Subtitle>Especialidades & Atendimento</S.Subtitle>
+          <S.Title id="services-title">Como a Psicoterapia Pode Ajudar Você</S.Title>
+          <S.Description>
+            A psicóloga Ticiana Moura oferece atendimento individual focado nas suas necessidades
+            emocionais, com consultas presenciais em Maceió e sessões de terapia online.
+          </S.Description>
+        </S.SectionHeader>
 
         <S.CardsGrid>
-          {serviceItems.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 30 }}
+          {serviceItems.map(({ icon: Icon, title, description }, index) => (
+            <S.CardItem
+              key={title}
+              initial={{ opacity: 0, y: offset + 6 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{
+                duration: 0.6,
+                delay: reduceMotion ? 0 : (index % 2) * 0.12,
+                ease: 'easeOut',
+              }}
             >
               <S.Card>
-                <S.IconWrapper>{item.icon}</S.IconWrapper>
-                <S.CardTitle as="h3">{item.title}</S.CardTitle>
-                <S.CardDescription>{item.description}</S.CardDescription>
+                <S.IconWrapper>
+                  <Icon size={26} aria-hidden="true" />
+                </S.IconWrapper>
+                <S.CardTitle>{title}</S.CardTitle>
+                <S.CardDescription>{description}</S.CardDescription>
               </S.Card>
-            </motion.div>
+            </S.CardItem>
           ))}
         </S.CardsGrid>
       </div>
