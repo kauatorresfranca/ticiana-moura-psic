@@ -1,3 +1,4 @@
+
 import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ChevronDown, MessageCircle } from 'lucide-react'
@@ -5,6 +6,17 @@ import * as S from './styles'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
+
+const GOOGLE_ADS_CONVERSION_ID =
+  'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
+
+const trackWhatsAppConversion = () => {
+  if (typeof window.gtag === 'function') {
+    window.gtag('event', 'conversion', {
+      send_to: GOOGLE_ADS_CONVERSION_ID,
+    })
+  }
+}
 
 const faqs = [
   {
@@ -39,14 +51,16 @@ const faqs = [
   },
 ]
 
-// Schema FAQPage para rich snippets do Google (calculado uma vez, fora do render)
 const faqSchemaJson = JSON.stringify({
   '@context': 'https://schema.org',
   '@type': 'FAQPage',
   mainEntity: faqs.map((faq) => ({
     '@type': 'Question',
     name: faq.question,
-    acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    acceptedAnswer: {
+      '@type': 'Answer',
+      text: faq.answer,
+    },
   })),
 }).replace(/</g, '\\u003c')
 
@@ -60,7 +74,10 @@ const FAQ = () => {
 
   return (
     <S.FaqSection id="duvidas" aria-labelledby="faq-title">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: faqSchemaJson }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: faqSchemaJson }}
+      />
 
       <div className="container">
         <S.FaqGrid>
@@ -71,10 +88,13 @@ const FAQ = () => {
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
             <S.Subtitle>Dúvidas Frequentes</S.Subtitle>
-            <S.Title id="faq-title">Dúvidas Frequentes sobre o Atendimento Psicológico</S.Title>
+            <S.Title id="faq-title">
+              Dúvidas Frequentes sobre o Atendimento Psicológico
+            </S.Title>
             <S.Description>
-              Reunimos as principais informações sobre as consultas presenciais em Maceió e online
-              para você iniciar seu acompanhamento com tranquilidade.
+              Reunimos as principais informações sobre as consultas presenciais
+              em Maceió e online para você iniciar seu acompanhamento com
+              tranquilidade.
             </S.Description>
           </S.SectionHeader>
 
@@ -89,7 +109,11 @@ const FAQ = () => {
                   initial={{ opacity: 0, y: offset }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: '-40px' }}
-                  transition={{ duration: 0.45, delay: reduceMotion ? 0 : index * 0.06, ease: 'easeOut' }}
+                  transition={{
+                    duration: 0.45,
+                    delay: reduceMotion ? 0 : index * 0.06,
+                    ease: 'easeOut',
+                  }}
                 >
                   <S.QuestionHeading>
                     <S.AccordionTrigger
@@ -100,7 +124,10 @@ const FAQ = () => {
                       id={`faq-header-${index}`}
                     >
                       <S.QuestionText>{faq.question}</S.QuestionText>
-                      <S.IconWrapper $isOpen={isOpen} aria-hidden="true">
+                      <S.IconWrapper
+                        $isOpen={isOpen}
+                        aria-hidden="true"
+                      >
                         <ChevronDown size={20} />
                       </S.IconWrapper>
                     </S.AccordionTrigger>
@@ -127,11 +154,15 @@ const FAQ = () => {
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: 'easeOut' }}
           >
-            <S.HelpText>Ainda ficou com alguma dúvida? Fale diretamente comigo.</S.HelpText>
+            <S.HelpText>
+              Ainda ficou com alguma dúvida? Fale diretamente comigo.
+            </S.HelpText>
+
             <S.CtaButton
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
+              onClick={trackWhatsAppConversion}
               aria-label="Tirar dúvidas e agendar consulta com Ticiana Moura pelo WhatsApp"
             >
               <MessageCircle size={20} aria-hidden="true" />

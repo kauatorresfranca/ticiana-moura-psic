@@ -1,3 +1,4 @@
+
 import { useReducedMotion, type Variants } from 'framer-motion'
 import { MessageCircle, Video, MapPin } from 'lucide-react'
 import * as S from './styles'
@@ -6,17 +7,46 @@ import HeroImage from '../../../assets/images/heroImage2.jpeg'
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
 
+const GOOGLE_ADS_CONVERSION_ID =
+  'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
+
+declare global {
+  interface Window {
+    gtag?: (
+      command: string,
+      action: string,
+      parameters?: Record<string, string | number | boolean | (() => void)>
+    ) => void
+  }
+}
+
 export const Hero = () => {
   const reduceMotion = useReducedMotion()
 
   const container: Variants = {
     hidden: {},
-    show: { transition: { staggerChildren: reduceMotion ? 0 : 0.12 } },
+    show: {
+      transition: {
+        staggerChildren: reduceMotion ? 0 : 0.12,
+      },
+    },
   }
 
   const item: Variants = {
     hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.7, ease: 'easeOut' } },
+    show: {
+      opacity: 1,
+      y: 0,
+      transition: { duration: 0.7, ease: 'easeOut' },
+    },
+  }
+
+  const handleWhatsAppClick = () => {
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', {
+        send_to: GOOGLE_ADS_CONVERSION_ID,
+      })
+    }
   }
 
   return (
@@ -24,7 +54,9 @@ export const Hero = () => {
       <div className="container">
         <S.HeroContent>
           <S.HeroText variants={container} initial="hidden" animate="show">
-            <S.Eyebrow variants={item}>Ticiana Moura · Psicóloga Clínica</S.Eyebrow>
+            <S.Eyebrow variants={item}>
+              Ticiana Moura · Psicóloga Clínica
+            </S.Eyebrow>
 
             <S.HeroTitle id="hero-title" variants={item}>
               Compreenda suas emoções
@@ -43,6 +75,7 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Agende sua consulta de psicoterapia pelo WhatsApp"
+                onClick={handleWhatsAppClick}
               >
                 <MessageCircle size={20} aria-hidden="true" />
                 Agende sua primeira sessão
@@ -62,9 +95,17 @@ export const Hero = () => {
           </S.HeroText>
 
           <S.Visual
-            initial={{ opacity: 0, y: reduceMotion ? 0 : 40, scale: reduceMotion ? 1 : 0.96 }}
+            initial={{
+              opacity: 0,
+              y: reduceMotion ? 0 : 40,
+              scale: reduceMotion ? 1 : 0.96,
+            }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.9, delay: reduceMotion ? 0 : 0.3, ease: 'easeOut' }}
+            transition={{
+              duration: 0.9,
+              delay: reduceMotion ? 0 : 0.3,
+              ease: 'easeOut',
+            }}
           >
             <S.ImageFrame>
               <img
