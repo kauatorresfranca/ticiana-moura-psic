@@ -1,4 +1,3 @@
-
 import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ChevronDown, MessageCircle } from 'lucide-react'
@@ -10,12 +9,27 @@ const WHATSAPP_URL =
 const GOOGLE_ADS_CONVERSION_ID =
   'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
 
-const trackWhatsAppConversion = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: GOOGLE_ADS_CONVERSION_ID,
-    })
+const gtagReportConversion = (url: string) => {
+  if (typeof window.gtag !== 'function') {
+    window.open(url, '_blank', 'noopener,noreferrer')
+    return
   }
+
+  let navigated = false
+
+  const navigateToWhatsApp = () => {
+    if (navigated) return
+    navigated = true
+    window.open(url, '_blank', 'noopener,noreferrer')
+  }
+
+  window.gtag('event', 'conversion', {
+    send_to: GOOGLE_ADS_CONVERSION_ID,
+    event_callback: navigateToWhatsApp,
+    event_timeout: 2000,
+  })
+
+  window.setTimeout(navigateToWhatsApp, 2000)
 }
 
 const faqs = [
@@ -162,7 +176,10 @@ const FAQ = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={trackWhatsAppConversion}
+              onClick={(event) => {
+                event.preventDefault()
+                gtagReportConversion(WHATSAPP_URL)
+              }}
               aria-label="Tirar dúvidas e agendar consulta com Ticiana Moura pelo WhatsApp"
             >
               <MessageCircle size={20} aria-hidden="true" />

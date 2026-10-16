@@ -2,125 +2,130 @@
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/png" href="/favicon.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta name="theme-color" content="#dbc3ad" />
 
     <!-- SEO Principal -->
     <title>Psicóloga em Maceió | Ticiana Moura – Atendimento Presencial e Online</title>
-    <meta name="description" content="Ticiana Moura, psicóloga clínica em Maceió (CRP 15/1563) com mais de 20 anos de experiência. Atendimento presencial e online. Agende sua consulta." />
+    <meta
+      name="description"
+      content="Ticiana Moura, psicóloga clínica em Maceió (CRP 15/1563), com mais de 20 anos de experiência. Atendimento presencial em Maceió e psicoterapia online. Entre em contato para agendar."
+    />
     <meta name="author" content="Ticiana Moura" />
     <meta name="robots" content="index, follow" />
     <link rel="canonical" href="https://ticianamoura.com.br/" />
 
-    <!-- Open Graph / Facebook -->
+    <!-- Open Graph -->
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://ticianamoura.com.br/" />
-    <meta property="og:title" content="Psicóloga em Maceió | Ticiana Moura – Atendimento Presencial e Online" />
-    <meta property="og:description" content="Psicóloga clínica em Maceió com mais de 20 anos de experiência. Atendimento presencial e sessões de terapia online. Agende sua consulta." />
-    <meta property="og:image" content="https://ticianamoura.com.br/og-image.jpg" />
     <meta property="og:locale" content="pt_BR" />
+    <meta property="og:url" content="https://ticianamoura.com.br/" />
+    <meta
+      property="og:title"
+      content="Psicóloga em Maceió | Ticiana Moura – Atendimento Presencial e Online"
+    />
+    <meta
+      property="og:description"
+      content="Psicóloga clínica em Maceió com mais de 20 anos de experiência. Atendimento presencial e psicoterapia online."
+    />
+    <meta
+      property="og:image"
+      content="https://ticianamoura.com.br/og-image.jpg"
+    />
 
     <!-- Twitter Cards -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content="https://ticianamoura.com.br/" />
-    <meta property="twitter:title" content="Psicóloga em Maceió | Ticiana Moura – Atendimento Presencial e Online" />
-    <meta property="twitter:description" content="Psicóloga clínica em Maceió com mais de 20 anos de experiência. Atendimento presencial e sessões de terapia online." />
-    <meta property="twitter:image" content="https://ticianamoura.com.br/og-image.jpg" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content="https://ticianamoura.com.br/" />
+    <meta
+      name="twitter:title"
+      content="Psicóloga em Maceió | Ticiana Moura – Atendimento Presencial e Online"
+    />
+    <meta
+      name="twitter:description"
+      content="Psicóloga clínica em Maceió com mais de 20 anos de experiência. Atendimento presencial e psicoterapia online."
+    />
+    <meta
+      name="twitter:image"
+      content="https://ticianamoura.com.br/og-image.jpg"
+    />
 
-    <!-- Fontes e Estilos Externa -->
+    <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
     <link
       href="https://fonts.googleapis.com/css2?family=Inter:wght@700;800;900&family=Montserrat:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <meta name="theme-color" content="#dbc3ad" />
 
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css" rel="stylesheet" />
+    <!-- Remix Icon -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.3.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
 
-      <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18509326460"></script>
+    <!-- Google tag (Google Ads) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=AW-18509326460"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+      function gtag(...args) {
+        dataLayer.push(args);
+      }
 
+      gtag('js', new Date());
       gtag('config', 'AW-18509326460');
     </script>
 
-    <!-- Dados Estruturados (Schema.org / JSON-LD) -->
+    <!-- Dados estruturados: Site, Profissional e Atendimento Local -->
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@graph": [
-        {
-          "@type": "WebSite",
-          "@id": "https://ticianamoura.com.br/#website",
-          "url": "https://ticianamoura.com.br/",
-          "name": "Ticiana Moura | Psicóloga em Maceió",
-          "description": "Atendimento psicológico presencial em Maceió e consulta online.",
-          "inLanguage": "pt-BR"
-        },
-        {
-          "@type": ["Psychotherapist", "LocalBusiness", "Person"],
-          "@id": "https://ticianamoura.com.br/#person",
-          "name": "Ticiana Moura",
-          "jobTitle": "Psicóloga Clínica",
-          "identifier": "CRP 15/1563",
-          "url": "https://ticianamoura.com.br/",
-          "image": "https://ticianamoura.com.br/og-image.jpg",
-          "telephone": "82 996727126",
-          "priceRange": "$$",
-          "address": {
-            "@type": "PostalAddress",
-            "streetAddress": "[PREENCHER: rua/número do consultório]",
-            "addressLocality": "Maceió",
-            "addressRegion": "AL",
-            "postalCode": "[PREENCHER: CEP]",
-            "addressCountry": "BR"
+      {
+        "@context": "https://schema.org",
+        "@graph": [
+          {
+            "@type": "WebSite",
+            "@id": "https://ticianamoura.com.br/#website",
+            "url": "https://ticianamoura.com.br/",
+            "name": "Ticiana Moura | Psicóloga em Maceió",
+            "description": "Atendimento psicológico presencial em Maceió e psicoterapia online.",
+            "inLanguage": "pt-BR"
           },
-          "geo": {
-            "@type": "GeoCoordinates",
-            "latitude": "[PREENCHER: ex. -9.6498]",
-            "longitude": "[PREENCHER: ex. -35.7089]"
-          },
-          "openingHoursSpecification": [
-            {
-              "@type": "OpeningHoursSpecification",
-              "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
-              "opens": "08:00",
-              "closes": "18:00"
-            }
-          ],
-          "areaServed": [
-            {
-              "@type": "City",
-              "name": "Maceió",
-              "sameAs": "https://pt.wikipedia.org/wiki/Macei%C3%B3"
+          {
+            "@type": "MedicalBusiness",
+            "@id": "https://ticianamoura.com.br/#business",
+            "name": "Ticiana Moura - Psicóloga Clínica",
+            "url": "https://ticianamoura.com.br/",
+            "image": "https://ticianamoura.com.br/og-image.jpg",
+            "telephone": "+5582996727126",
+            "priceRange": "$$",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Maceió",
+              "addressRegion": "AL",
+              "addressCountry": "BR"
             },
-            {
-              "@type": "Country",
-              "name": "Brasil"
-            }
-          ],
-          "sameAs": [
-            "[PREENCHER: link do Instagram]",
-            "[PREENCHER: link do perfil no Google Business Profile]",
-            "[PREENCHER: link do Doctoralia, se tiver]"
-          ],
-          "knowsAbout": [
-            "Psicologia Clínica",
-            "Gestalt-terapia",
-            "Ansiedade",
-            "Depressão",
-            "Terapia Individual",
-            "Psicoterapia Online"
-          ]
-        }
-      ]
-    }
+            "areaServed": ["Maceió", "Brasil"],
+            "knowsAbout": [
+              "Psicologia Clínica",
+              "Gestalt-terapia",
+              "Psicoterapia",
+              "Ansiedade",
+              "Depressão",
+              "Autoconhecimento",
+              "Psicoterapia Online"
+            ]
+          }
+        ]
+      }
     </script>
   </head>
+
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>

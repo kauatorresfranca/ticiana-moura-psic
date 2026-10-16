@@ -1,4 +1,3 @@
-
 import { useReducedMotion, type Variants } from 'framer-motion'
 import { MessageCircle, Video, MapPin } from 'lucide-react'
 import * as S from './styles'
@@ -9,16 +8,6 @@ const WHATSAPP_URL =
 
 const GOOGLE_ADS_CONVERSION_ID =
   'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
-
-declare global {
-  interface Window {
-    gtag?: (
-      command: string,
-      action: string,
-      parameters?: Record<string, string | number | boolean | (() => void)>
-    ) => void
-  }
-}
 
 export const Hero = () => {
   const reduceMotion = useReducedMotion()
