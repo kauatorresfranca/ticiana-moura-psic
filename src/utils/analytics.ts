@@ -6,7 +6,11 @@ export const trackWhatsAppConversion = (url: string, event?: React.MouseEvent) =
     event.preventDefault()
   }
 
+  let navigated = false
+
   const openWhatsApp = () => {
+    if (navigated) return
+    navigated = true
     window.open(url, '_blank', 'noopener,noreferrer')
   }
 
@@ -15,19 +19,13 @@ export const trackWhatsAppConversion = (url: string, event?: React.MouseEvent) =
     return
   }
 
-  let navigated = false
-
-  const handleNavigation = () => {
-    if (navigated) return
-    navigated = true
-    openWhatsApp()
-  }
-
+  // Dispara o evento de conversão configurado no Google Ads
   window.gtag('event', 'conversion', {
     send_to: GOOGLE_ADS_CONVERSION_ID,
-    event_callback: handleNavigation,
+    event_callback: openWhatsApp,
     event_timeout: 2000,
   })
 
-  window.setTimeout(handleNavigation, 2000)
+  // Garantia caso o event_callback demore mais de 2 segundos
+  window.setTimeout(openWhatsApp, 2000)
 }
