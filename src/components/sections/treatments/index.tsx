@@ -1,21 +1,10 @@
-
 import { useReducedMotion } from 'framer-motion'
 import { Calendar, Video, HeartHandshake, ArrowRight } from 'lucide-react'
 import * as S from './styles'
+import { trackWhatsAppConversion } from '../../../utils/analytics'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
-
-const GOOGLE_ADS_CONVERSION_ID =
-  'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
-
-const trackWhatsAppConversion = () => {
-  if (typeof window.gtag === 'function') {
-    window.gtag('event', 'conversion', {
-      send_to: GOOGLE_ADS_CONVERSION_ID,
-    })
-  }
-}
 
 const steps = [
   {
@@ -103,7 +92,7 @@ const HowItWorks = () => {
             href={WHATSAPP_URL}
             target="_blank"
             rel="noopener noreferrer"
-            onClick={trackWhatsAppConversion}
+            onClick={(e) => trackWhatsAppConversion(WHATSAPP_URL, e)}
             aria-label="Agende sua consulta de psicoterapia via WhatsApp com Ticiana Moura"
           >
             Agende sua consulta com Ticiana Moura

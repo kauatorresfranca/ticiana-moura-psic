@@ -2,12 +2,10 @@ import { useReducedMotion, type Variants } from 'framer-motion'
 import { MessageCircle, Video, MapPin } from 'lucide-react'
 import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
+import { trackWhatsAppConversion } from '../../../utils/analytics'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
-
-const GOOGLE_ADS_CONVERSION_ID =
-  'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
 
 export const Hero = () => {
   const reduceMotion = useReducedMotion()
@@ -28,14 +26,6 @@ export const Hero = () => {
       y: 0,
       transition: { duration: 0.7, ease: 'easeOut' },
     },
-  }
-
-  const handleWhatsAppClick = () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        send_to: GOOGLE_ADS_CONVERSION_ID,
-      })
-    }
   }
 
   return (
@@ -64,7 +54,7 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Agende sua consulta de psicoterapia pelo WhatsApp"
-                onClick={handleWhatsAppClick}
+                onClick={(e) => trackWhatsAppConversion(WHATSAPP_URL, e)}
               >
                 <MessageCircle size={20} aria-hidden="true" />
                 Agende sua primeira sessão

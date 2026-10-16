@@ -2,35 +2,10 @@ import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ChevronDown, MessageCircle } from 'lucide-react'
 import * as S from './styles'
+import { trackWhatsAppConversion } from '../../../utils/analytics'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
-
-const GOOGLE_ADS_CONVERSION_ID =
-  'AW-18509326460/TrlBCJibn58dEPzQ9_lE'
-
-const gtagReportConversion = (url: string) => {
-  if (typeof window.gtag !== 'function') {
-    window.open(url, '_blank', 'noopener,noreferrer')
-    return
-  }
-
-  let navigated = false
-
-  const navigateToWhatsApp = () => {
-    if (navigated) return
-    navigated = true
-    window.open(url, '_blank', 'noopener,noreferrer')
-  }
-
-  window.gtag('event', 'conversion', {
-    send_to: GOOGLE_ADS_CONVERSION_ID,
-    event_callback: navigateToWhatsApp,
-    event_timeout: 2000,
-  })
-
-  window.setTimeout(navigateToWhatsApp, 2000)
-}
 
 const faqs = [
   {
@@ -176,10 +151,7 @@ const FAQ = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(event) => {
-                event.preventDefault()
-                gtagReportConversion(WHATSAPP_URL)
-              }}
+              onClick={(e) => trackWhatsAppConversion(WHATSAPP_URL, e)}
               aria-label="Tirar dúvidas e agendar consulta com Ticiana Moura pelo WhatsApp"
             >
               <MessageCircle size={20} aria-hidden="true" />
