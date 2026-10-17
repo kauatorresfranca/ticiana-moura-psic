@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useReducedMotion } from 'framer-motion'
 import { ChevronDown, MessageCircle } from 'lucide-react'
 import * as S from './styles'
-import { trackWhatsAppConversion } from '../../../utils/analytics'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
@@ -60,6 +59,19 @@ const FAQ = () => {
 
   const toggle = (index: number) =>
     setActiveIndex((current) => (current === index ? null : index))
+
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    
+    // Declara o tipo esperado para a função global do Google
+    const reportConversion = (window as Window & { gtag_report_conversion?: (url: string) => void }).gtag_report_conversion
+
+    if (typeof reportConversion === 'function') {
+      reportConversion(WHATSAPP_URL)
+    } else {
+      window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer')
+    }
+  }
 
   return (
     <S.FaqSection id="duvidas" aria-labelledby="faq-title">
@@ -151,7 +163,7 @@ const FAQ = () => {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              onClick={(e) => trackWhatsAppConversion(WHATSAPP_URL, e)}
+              onClick={handleWhatsAppClick}
               aria-label="Tirar dúvidas e agendar consulta com Ticiana Moura pelo WhatsApp"
             >
               <MessageCircle size={20} aria-hidden="true" />

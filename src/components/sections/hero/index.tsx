@@ -2,7 +2,6 @@ import { useReducedMotion, type Variants } from 'framer-motion'
 import { MessageCircle, Video, MapPin } from 'lucide-react'
 import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
-import { trackWhatsAppConversion } from '../../../utils/analytics'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
@@ -26,6 +25,19 @@ export const Hero = () => {
       y: 0,
       transition: { duration: 0.7, ease: 'easeOut' },
     },
+  }
+
+  const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault()
+    
+    // Declara o tipo esperado para a função global do Google
+    const reportConversion = (window as Window & { gtag_report_conversion?: (url: string) => void }).gtag_report_conversion
+
+    if (typeof reportConversion === 'function') {
+      reportConversion(WHATSAPP_URL)
+    } else {
+      window.open(WHATSAPP_URL, '_blank', 'noopener,noreferrer')
+    }
   }
 
   return (
@@ -54,7 +66,7 @@ export const Hero = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label="Agende sua consulta de psicoterapia pelo WhatsApp"
-                onClick={(e) => trackWhatsAppConversion(WHATSAPP_URL, e)}
+                onClick={handleWhatsAppClick}
               >
                 <MessageCircle size={20} aria-hidden="true" />
                 Agende sua primeira sessão
