@@ -82,6 +82,23 @@
       gtag('js', new Date());
       gtag('config', 'AW-18509326460');
     </script>
+    <!-- Event snippet for Contato wpp conversion page
+    In your html page, add the snippet and call gtag_report_conversion when someone clicks on the chosen link or button. -->
+    <script>
+    function gtag_report_conversion(url) {
+      var callback = function () {
+        if (typeof(url) != 'undefined') {
+          window.location = url;
+        }
+      };
+      gtag('event', 'conversion', {
+          'send_to': 'AW-18509326460/TrlBCJibn58dEPzQ9_lE',
+          'event_callback': callback
+      });
+      return false;
+    }
+    </script>
+
 
     <!-- Dados estruturados: Site, Profissional e Atendimento Local -->
     <script type="application/ld+json">
