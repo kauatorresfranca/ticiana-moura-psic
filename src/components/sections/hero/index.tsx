@@ -4,7 +4,8 @@ import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
 
 const WHATSAPP_URL =
-  'https://wa.me/+5582996727126?text=Ol%C3%A1%2C%20Ticiana!%20Gostaria%20de%20agendar%20uma%20consulta%20de%20psicoterapia.'
+  'https://wa.me/+5582996727126?text=' +
+  encodeURIComponent('Olá, Ticiana! Vim do site e gostaria de agendar um horário.')
 
 export const Hero = () => {
   const reduceMotion = useReducedMotion()
@@ -29,9 +30,10 @@ export const Hero = () => {
 
   const handleWhatsAppClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault()
-    
-    // Declara o tipo esperado para a função global do Google
-    const reportConversion = (window as Window & { gtag_report_conversion?: (url: string) => void }).gtag_report_conversion
+
+    const reportConversion = (
+      window as Window & { gtag_report_conversion?: (url: string) => void }
+    ).gtag_report_conversion
 
     if (typeof reportConversion === 'function') {
       reportConversion(WHATSAPP_URL)
