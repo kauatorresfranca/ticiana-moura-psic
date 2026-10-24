@@ -1,30 +1,31 @@
+import React from 'react'
 import { useReducedMotion, type Variants } from 'framer-motion'
-import { MessageCircle, Video, MapPin } from 'lucide-react'
+import { MessageCircle, ShieldCheck } from 'lucide-react'
 import * as S from './styles'
 import HeroImage from '../../../assets/images/heroImage2.jpeg'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=' +
-  encodeURIComponent('Olá, Ticiana! Vim do site e gostaria de agendar um horário.')
+  encodeURIComponent('Olá, Ticiana! Vim do site e gostaria de tirar algumas dúvidas sobre os horários.')
 
-export const Hero = () => {
+export const Hero: React.FC = () => {
   const reduceMotion = useReducedMotion()
 
   const container: Variants = {
     hidden: {},
     show: {
       transition: {
-        staggerChildren: reduceMotion ? 0 : 0.12,
+        staggerChildren: reduceMotion ? 0 : 0.08,
       },
     },
   }
 
   const item: Variants = {
-    hidden: { opacity: 0, y: reduceMotion ? 0 : 24 },
+    hidden: { opacity: 0, y: reduceMotion ? 0 : 16 },
     show: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.7, ease: 'easeOut' },
+      transition: { duration: 0.5, ease: 'easeOut' },
     },
   }
 
@@ -52,14 +53,12 @@ export const Hero = () => {
             </S.Eyebrow>
 
             <S.HeroTitle id="hero-title" variants={item}>
-              Compreenda suas emoções
-              <span>e cuide de si com mais leveza.</span>
+              Você não precisa <span>enfrentar seus desafios emocionais</span> sem apoio.
             </S.HeroTitle>
 
             <S.HeroDescription variants={item}>
-              Acolhimento profissional e psicoterapia para adultos e adolescentes.
-              Espaço seguro para o tratamento de ansiedade, estresse,
-              autoconhecimento e desafios emocionais.
+              Psicoterapia online e presencial em Maceió, com escuta ética e acolhedora
+              para quem busca um acompanhamento seguro, sério e livre de julgamentos.
             </S.HeroDescription>
 
             <S.HeroActions variants={item}>
@@ -67,36 +66,29 @@ export const Hero = () => {
                 href={WHATSAPP_URL}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label="Agende sua consulta de psicoterapia pelo WhatsApp"
+                aria-label="Tirar dúvidas e consultar horários pelo WhatsApp"
                 onClick={handleWhatsAppClick}
               >
                 <MessageCircle size={20} aria-hidden="true" />
                 Agende sua primeira sessão
               </S.HeroButton>
-            </S.HeroActions>
 
-            <S.HeroBadges variants={item}>
-              <li>
-                <MapPin size={16} aria-hidden="true" />
-                Presencial em Maceió
-              </li>
-              <li>
-                <Video size={16} aria-hidden="true" />
-                Atendimento Online
-              </li>
-            </S.HeroBadges>
+              <S.TrustHint>
+                <ShieldCheck size={16} aria-hidden="true" />
+                Atendimento seguro e sigiloso.
+              </S.TrustHint>
+            </S.HeroActions>
           </S.HeroText>
 
           <S.Visual
             initial={{
               opacity: 0,
-              y: reduceMotion ? 0 : 40,
-              scale: reduceMotion ? 1 : 0.96,
+              y: reduceMotion ? 0 : 20,
             }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+            animate={{ opacity: 1, y: 0 }}
             transition={{
-              duration: 0.9,
-              delay: reduceMotion ? 0 : 0.3,
+              duration: 0.7,
+              delay: reduceMotion ? 0 : 0.15,
               ease: 'easeOut',
             }}
           >
@@ -107,6 +99,8 @@ export const Hero = () => {
                 title="Ticiana Moura | Psicóloga Clínica"
                 fetchPriority="high"
                 decoding="async"
+                width="460"
+                height="575"
               />
             </S.ImageFrame>
           </S.Visual>
