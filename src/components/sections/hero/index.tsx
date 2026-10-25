@@ -6,7 +6,7 @@ import HeroImage from '../../../assets/images/heroImage2.jpeg'
 
 const WHATSAPP_URL =
   'https://wa.me/+5582996727126?text=' +
-  encodeURIComponent('Olá, Ticiana! Vim do site e gostaria de tirar algumas dúvidas sobre os horários.')
+  encodeURIComponent('Olá, Ticiana! Vim do site e gostaria agendar uma sessão de psicoterapia.')
 
 export const Hero: React.FC = () => {
   const reduceMotion = useReducedMotion()
